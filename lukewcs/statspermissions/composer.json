@@ -1,0 +1,31 @@
+{
+	"name": "lukewcs/statspermissions",
+	"type": "phpbb-extension",
+	"description": "Set independent permissions for statistic and newest member. The permissions can be set with the full rights system, or with the simplified rights system (Display for guests).",
+	"homepage": "https://github.com/LukeWCS/stats-permissions",
+	"version": "1.0.0-beta1",
+	"time": "2019-04-05",
+	"license": "GPL-2.0-only",
+	"authors": [
+		{
+			"name": "LukeWCS",
+			"homepage": "https://www.wcsaga.org",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3.3"
+	},
+	"extra": {
+		"display-name": "Stats Permissions",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.1.11"
+		},
+		"version-check": {
+			"host": "raw.githubusercontent.com",
+			"directory": "/LukeWCS/stats-permissions/master",
+			"filename": "stats-permissions_version.json",
+			"ssl": true
+		}
+	}
+}

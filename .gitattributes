@@ -1,0 +1,4 @@
+* text=auto
+* text eol=lf
+/.editorconfig export-ignore
+/.gitattributes export-ignore
