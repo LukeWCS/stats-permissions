@@ -1,15 +1,14 @@
 <?php
 /**
-* 
+*
 * Stats Permissions. An extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
-* Lang_iso     : de_x_sie
-* Lang_ver     : 1.0.0
-* Lang_author  : LukeWCS
-* Lang_tab_size: 4
+* Lang_iso   : de_x_sie
+* Lang_ver   : 1.0.0
+* Lang_author: LukeWCS
 *
 */
 
@@ -54,20 +53,22 @@ $lang = array_merge($lang, array(
 	'STATS_PERMISSIONS_ADMIN_MODE'					=> 'Administrator-Modus',
 	'STATS_PERMISSIONS_ADMIN_MODE_EXP'				=> 'Dieser Modus setzt alle Berechtigungssysteme außer Kraft und nur Benutzer mit administrativen Rechten können die Statistik sehen. Hilfreich wenn die Statistik kurzfristig für andere nicht sichtbar sein soll.',
 	'STATS_PERMISSIONS_USE_PERMISSIONS'				=> 'Benutze das Berechtigungssystem von phpBB',
-	'STATS_PERMISSIONS_USE_PERMISSIONS_EXP'			=> 'Ermöglicht es, für jede Benutzergruppe getrennt festlegen zu können, welchen Umfang die Statistik haben soll. Die Rechte können wie folgt angepasst werden: “BERECHTIGUNGEN » Gruppenrechte » [Benutzergruppe] » Benutzer-Berechtigungen » Erweiterte Berechtigungen » Diverses”.',
+	'STATS_PERMISSIONS_USE_PERMISSIONS_EXP'			=> 'Ermöglicht es, für jede Benutzergruppe getrennt festlegen zu können, welchen Umfang die Statistik haben soll. Die Rechte können wie folgt angepasst werden: „BERECHTIGUNGEN » Gruppenrechte » [Benutzergruppe] » Benutzer-Berechtigungen » Erweiterte Berechtigungen » Diverses“.',
 	'STATS_PERMISSIONS_DISP_FOR_GUESTS'				=> 'Anzeige für Gäste',
-	'STATS_PERMISSIONS_DISP_FOR_GUESTS_EXP'			=> 'Legt fest, was Gäste sehen können. “Statistik” zeigt nur die anonymen Zahlen und “Nichts” schaltet die Statistik für Gäste komplett aus.',
-	'STATS_PERMISSIONS_DISP_FOR_GUESTS_1'			=> 'Statistik und neuestes Mitglied',
-	'STATS_PERMISSIONS_DISP_FOR_GUESTS_3'			=> 'Neuestes Mitglied',
-	'STATS_PERMISSIONS_DISP_FOR_GUESTS_0'			=> 'Statistik',
-	'STATS_PERMISSIONS_DISP_FOR_GUESTS_2'			=> 'Nichts',
+	'STATS_PERMISSIONS_DISP_FOR_GUESTS_EXP'			=> 'Legt fest, was Gäste sehen können. „Statistik“ zeigt nur die anonymen Zahlen und „Nichts“ schaltet die Statistik für Gäste komplett aus.',
+	'STATS_PERMISSIONS_DISP_FOR_BOTS'				=> 'Anzeige für Bots',
+	'STATS_PERMISSIONS_DISP_FOR_BOTS_EXP'			=> 'Legt fest, was Bots sehen können. „Statistik“ zeigt nur die anonymen Zahlen und „Nichts“ schaltet die Anzeige für Bots komplett aus.',
+	'STATS_PERMISSIONS_DISP_PERM_1'					=> 'Statistik und neuestes Mitglied',
+	'STATS_PERMISSIONS_DISP_PERM_3'					=> 'Neuestes Mitglied',
+	'STATS_PERMISSIONS_DISP_PERM_0'					=> 'Statistik',
+	'STATS_PERMISSIONS_DISP_PERM_2'					=> 'Nichts',
 
 	// config section 2
 	'STATS_PERMISSIONS_SECTION_RESET'				=> 'Zurücksetzen',
 	'STATS_PERMISSIONS_DEFAULTS'					=> 'Einstellungen zurücksetzen',
 	'STATS_PERMISSIONS_DEFAULTS_EXP'				=> 'Setzt alle Einstellungen dieser Seite auf den Installationsstandard zurück.',
 	'STATS_PERMISSIONS_BUTTON_DEFAULTS'				=> 'Standard',
-	
+
 	// messages
 	'STATS_PERMISSIONS_MSG_SAVED_SETTINGS'			=> 'Statistik-Berechtigungen: Einstellungen erfolgreich gespeichert.',
 ));

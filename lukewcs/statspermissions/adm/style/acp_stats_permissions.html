@@ -34,14 +34,24 @@
 			<dt><label>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS') }}{{ lang('COLON') }}</label><br /><span>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS_EXP') }}</span></dt>
 			<dd>
 				<select name="stats_permissions_disp_for_guests">
-					<option id="stats_permissions_disp_for_guests_1" value="1" {% if STATS_PERMISSIONS_DISP_FOR_GUESTS == 1 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS_1') }}</option>
-					<option id="stats_permissions_disp_for_guests_3" value="3" {% if STATS_PERMISSIONS_DISP_FOR_GUESTS == 3 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS_3') }}</option>
-					<option id="stats_permissions_disp_for_guests_0" value="0" {% if STATS_PERMISSIONS_DISP_FOR_GUESTS == 0 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS_0') }}</option>
-					<option id="stats_permissions_disp_for_guests_2" value="2" {% if STATS_PERMISSIONS_DISP_FOR_GUESTS == 2 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS_2') }}</option>
+					<option id="stats_permissions_disp_for_guests_1" value="1" {% if STATS_PERMISSIONS_DISP_FOR_GUESTS == 1 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_PERM_1') }}</option>
+					<option id="stats_permissions_disp_for_guests_3" value="3" {% if STATS_PERMISSIONS_DISP_FOR_GUESTS == 3 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_PERM_3') }}</option>
+					<option id="stats_permissions_disp_for_guests_0" value="0" {% if STATS_PERMISSIONS_DISP_FOR_GUESTS == 0 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_PERM_0') }}</option>
+					<option id="stats_permissions_disp_for_guests_2" value="2" {% if STATS_PERMISSIONS_DISP_FOR_GUESTS == 2 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_PERM_2') }}</option>
 				</select>
 			</dd>
 		</dl>
-	</fieldset>
+		<dl id="stats_permissions_opt_disp_for_bots">
+			<dt><label>{{ lang('STATS_PERMISSIONS_DISP_FOR_BOTS') }}{{ lang('COLON') }}</label><br /><span>{{ lang('STATS_PERMISSIONS_DISP_FOR_BOTS_EXP') }}</span></dt>
+			<dd>
+				<select name="stats_permissions_disp_for_bots">
+					<option id="stats_permissions_disp_for_bots_1" value="1" {% if STATS_PERMISSIONS_DISP_FOR_BOTS == 1 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_PERM_1') }}</option>
+					<option id="stats_permissions_disp_for_bots_3" value="3" {% if STATS_PERMISSIONS_DISP_FOR_BOTS == 3 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_PERM_3') }}</option>
+					<option id="stats_permissions_disp_for_bots_0" value="0" {% if STATS_PERMISSIONS_DISP_FOR_BOTS == 0 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_PERM_0') }}</option>
+					<option id="stats_permissions_disp_for_bots_2" value="2" {% if STATS_PERMISSIONS_DISP_FOR_BOTS == 2 %}selected="selected"{% endif %}>{{ lang('STATS_PERMISSIONS_DISP_PERM_2') }}</option>
+				</select>
+			</dd>
+		</dl> 	</fieldset>
 
 	<fieldset>
 		<legend>{{ lang('STATS_PERMISSIONS_SECTION_RESET') }}</legend>
@@ -68,13 +78,15 @@ function stats_permissions_set_controls_state() {
 	const disabled = "0.35";
 
 	document.getElementById("stats_permissions_opt_use_permissions").style.opacity = (document.getElementById("stats_permissions_admin_mode_0").checked) ? enabled : disabled;
-	document.getElementById("stats_permissions_opt_disp_for_guests").style.opacity = (document.getElementById("stats_permissions_use_permissions_0").checked && document.getElementById("stats_permissions_admin_mode_0").checked) ? enabled : disabled;
+	document.getElementById("stats_permissions_opt_disp_for_guests").style.opacity = (document.getElementById("stats_permissions_admin_mode_0").checked && document.getElementById("stats_permissions_use_permissions_0").checked) ? enabled : disabled;
+	document.getElementById("stats_permissions_opt_disp_for_bots").style.opacity = (document.getElementById("stats_permissions_admin_mode_0").checked && document.getElementById("stats_permissions_use_permissions_0").checked) ? enabled : disabled;
 }
 
 function stats_permissions_set_defaults() {
 	document.getElementById("stats_permissions_admin_mode_0").checked = true;
 	document.getElementById("stats_permissions_use_permissions_0").checked = true;
 	document.getElementById("stats_permissions_disp_for_guests_0").selected = true;
+	document.getElementById("stats_permissions_disp_for_bots_2").selected = true;
 	stats_permissions_set_controls_state();
 }
 

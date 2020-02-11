@@ -1,15 +1,14 @@
 <?php
 /**
-* 
+*
 * Stats Permissions. An extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
-* Lang_iso     : en
-* Lang_ver     : 1.0.0
-* Lang_author  : LukeWCS
-* Lang_tab_size: 4
+* Lang_iso   : en
+* Lang_ver   : 1.0.0
+* Lang_author: LukeWCS
 *
 */
 
@@ -56,11 +55,13 @@ $lang = array_merge($lang, array(
 	'STATS_PERMISSIONS_USE_PERMISSIONS'				=> 'Use the permission system of phpBB',
 	'STATS_PERMISSIONS_USE_PERMISSIONS_EXP'			=> 'Enables you to specify for each user group separately, to what extent the display should be made. The rights can be set as follows: "PERMISSIONS" » Group permissions » [user group] » User permissions » Advanced Permissions » Misc".',
 	'STATS_PERMISSIONS_DISP_FOR_GUESTS'				=> 'Display for guests',
-	'STATS_PERMISSIONS_DISP_FOR_GUESTS_EXP'			=> 'Determines what guests can see. “Statistics” shows only the anonymous numbers and “Nothing” completely turns off the statistics for guests.',
-	'STATS_PERMISSIONS_DISP_FOR_GUESTS_1'			=> 'Statistics and newest member',
-	'STATS_PERMISSIONS_DISP_FOR_GUESTS_3'			=> 'Newest member',
-	'STATS_PERMISSIONS_DISP_FOR_GUESTS_0'			=> 'Statistics',
-	'STATS_PERMISSIONS_DISP_FOR_GUESTS_2'			=> 'Nothing',
+	'STATS_PERMISSIONS_DISP_FOR_GUESTS_EXP'			=> 'Determines what guests can see. “Statistics” shows only the anonymous numbers and “Nothing” completely turns off the display for guests.',
+	'STATS_PERMISSIONS_DISP_FOR_BOTS'				=> 'Display for bots',
+	'STATS_PERMISSIONS_DISP_FOR_BOTS_EXP'			=> 'Determines what bots can see. “Statistics” shows only the anonymous numbers and “Nothing” completely turns off the display for bots.',
+	'STATS_PERMISSIONS_DISP_PERM_1'					=> 'Statistics and newest member',
+	'STATS_PERMISSIONS_DISP_PERM_3'					=> 'Newest member',
+	'STATS_PERMISSIONS_DISP_PERM_0'					=> 'Statistics',
+	'STATS_PERMISSIONS_DISP_PERM_2'					=> 'Nothing',
 
 	// config section 2
 	'STATS_PERMISSIONS_SECTION_RESET'				=> 'Reset',

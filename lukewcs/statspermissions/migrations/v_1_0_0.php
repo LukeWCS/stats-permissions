@@ -1,6 +1,6 @@
 <?php
 /**
-* 
+*
 * Stats Permissions. An extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
@@ -26,9 +26,10 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 	{
 		$data = array();
 		// Add configs
-		$data[] = array('config.add', array('stats_permissions_admin_mode'			, '0')); 
-		$data[] = array('config.add', array('stats_permissions_use_permissions'		, '0')); 
-		$data[] = array('config.add', array('stats_permissions_disp_for_guests'		, '0')); 		
+		$data[] = array('config.add', array('stats_permissions_admin_mode'			, '0'));
+		$data[] = array('config.add', array('stats_permissions_use_permissions'		, '0'));
+		$data[] = array('config.add', array('stats_permissions_disp_for_guests'		, '0'));
+		$data[] = array('config.add', array('stats_permissions_disp_for_bots'		, '2'));
 		// Add permissions
 		$data[] = array('permission.add', array('u_stats_permissions_show_stats'));
 		$data[] = array('permission.add', array('u_stats_permissions_show_newest'));
@@ -41,51 +42,66 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 		$data[] = array('permission.permission_set', array('REGISTERED'			, 'u_stats_permissions_show_newest', 'group'));
 		$data[] = array('permission.permission_set', array('NEWLY_REGISTERED'	, 'u_stats_permissions_show_newest', 'group', false));
 		$data[] = array('permission.permission_set', array('GUESTS'				, 'u_stats_permissions_show_stats', 'group'));
-		$data[] = array('permission.permission_set', array('BOTS'				, 'u_stats_permissions_show_stats', 'group'));
 		// Set permission roles
-		if ($this->role_exists('ROLE_USER_STANDARD'))	$data[] = array('permission.permission_set', array('ROLE_USER_STANDARD'		, 'u_stats_permissions_show_stats', 'role'));
-		if ($this->role_exists('ROLE_USER_STANDARD'))	$data[] = array('permission.permission_set', array('ROLE_USER_STANDARD'		, 'u_stats_permissions_show_newest', 'role'));
-		if ($this->role_exists('ROLE_USER_LIMITED'))	$data[] = array('permission.permission_set', array('ROLE_USER_LIMITED'		, 'u_stats_permissions_show_stats', 'role'));
-		if ($this->role_exists('ROLE_USER_LIMITED'))	$data[] = array('permission.permission_set', array('ROLE_USER_LIMITED'		, 'u_stats_permissions_show_newest', 'role'));
-		if ($this->role_exists('ROLE_USER_FULL'))		$data[] = array('permission.permission_set', array('ROLE_USER_FULL'			, 'u_stats_permissions_show_stats', 'role'));
-		if ($this->role_exists('ROLE_USER_FULL'))		$data[] = array('permission.permission_set', array('ROLE_USER_FULL'			, 'u_stats_permissions_show_newest', 'role'));
-		if ($this->role_exists('ROLE_USER_NOPM'))		$data[] = array('permission.permission_set', array('ROLE_USER_NOPM'			, 'u_stats_permissions_show_stats', 'role'));
-		if ($this->role_exists('ROLE_USER_NOPM'))		$data[] = array('permission.permission_set', array('ROLE_USER_NOPM'			, 'u_stats_permissions_show_newest', 'role'));
-		if ($this->role_exists('ROLE_USER_NOAVATAR'))	$data[] = array('permission.permission_set', array('ROLE_USER_NOAVATAR'		, 'u_stats_permissions_show_stats', 'role'));
-		if ($this->role_exists('ROLE_USER_NOAVATAR'))	$data[] = array('permission.permission_set', array('ROLE_USER_NOAVATAR'		, 'u_stats_permissions_show_newest', 'role'));
-		if ($this->role_exists('ROLE_USER_NEW_MEMBER'))	$data[] = array('permission.permission_set', array('ROLE_USER_NEW_MEMBER'	, 'u_stats_permissions_show_newest', 'role', false));
-		// Custom functions
+		if ($this->role_exists('ROLE_USER_STANDARD'))
+		{
+			$data[] = array('permission.permission_set', array('ROLE_USER_STANDARD'		, 'u_stats_permissions_show_stats', 'role'));
+			$data[] = array('permission.permission_set', array('ROLE_USER_STANDARD'		, 'u_stats_permissions_show_newest', 'role'));
+		}
+		if ($this->role_exists('ROLE_USER_LIMITED'))
+		{
+			$data[] = array('permission.permission_set', array('ROLE_USER_LIMITED'		, 'u_stats_permissions_show_stats', 'role'));
+			$data[] = array('permission.permission_set', array('ROLE_USER_LIMITED'		, 'u_stats_permissions_show_newest', 'role'));
+		}
+		if ($this->role_exists('ROLE_USER_FULL'))
+		{
+			$data[] = array('permission.permission_set', array('ROLE_USER_FULL'			, 'u_stats_permissions_show_stats', 'role'));
+			$data[] = array('permission.permission_set', array('ROLE_USER_FULL'			, 'u_stats_permissions_show_newest', 'role'));
+		}
+		if ($this->role_exists('ROLE_USER_NOPM'))
+		{
+			$data[] = array('permission.permission_set', array('ROLE_USER_NOPM'			, 'u_stats_permissions_show_stats', 'role'));
+			$data[] = array('permission.permission_set', array('ROLE_USER_NOPM'			, 'u_stats_permissions_show_newest', 'role'));
+		}
+		if ($this->role_exists('ROLE_USER_NOAVATAR'))
+		{
+			$data[] = array('permission.permission_set', array('ROLE_USER_NOAVATAR'		, 'u_stats_permissions_show_stats', 'role'));
+			$data[] = array('permission.permission_set', array('ROLE_USER_NOAVATAR'		, 'u_stats_permissions_show_newest', 'role'));
+		}
+		if ($this->role_exists('ROLE_USER_NEW_MEMBER'))
+		{
+			$data[] = array('permission.permission_set', array('ROLE_USER_NEW_MEMBER'	, 'u_stats_permissions_show_newest', 'role', false));
+		}
 		// Add ACP modules
 		$data[] = array('module.add', array(
-			'acp', 
-			'ACP_CAT_DOT_MODS', 
+			'acp',
+			'ACP_CAT_DOT_MODS',
 			'STATS_PERMISSIONS_NAV_TITLE'
 		));
 		$data[] = array('module.add', array(
-			'acp', 
-			'STATS_PERMISSIONS_NAV_TITLE', 
+			'acp',
+			'STATS_PERMISSIONS_NAV_TITLE',
 			array(
 				'module_basename'	=> '\lukewcs\statspermissions\acp\acp_stats_permissions_module',
 				'module_langname'	=> 'STATS_PERMISSIONS_NAV_CONFIG',
 				'module_mode'		=> 'overview',
 				'module_auth'		=> 'ext_lukewcs/statspermissions && acl_a_board',
-		))); 
+		)));
 		// Set current version
 		$data[] = array('config.add', array('stats_permissions_ext_version'				, '1.0.0'));
-		
+
 		return $data;
 	}
 
 	public function revert_data()
 	{
 		return(array(
-			// Remove configs
 			// Remove permissions
 			array('permission.remove', array('u_stats_permissions_show_stats')),
-			array('permission.remove', array('u_stats_permissions_show_newest')),			
+			array('permission.remove', array('u_stats_permissions_show_newest')),
 		));
-	} 
-	
+	}
+
 	private function role_exists($role)
 	{
 		$sql = 'SELECT role_id
@@ -94,7 +110,7 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 		$result = $this->db->sql_query_limit($sql, 1);
 		$role_id = $this->db->sql_fetchfield('role_id');
 		$this->db->sql_freeresult($result);
-		
+
 		return $role_id;
-	}	
+	}
 }

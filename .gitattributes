@@ -1,4 +1,5 @@
 * text=auto
 * text eol=lf
-/.editorconfig export-ignore
-/.gitattributes export-ignore
+.editorconfig export-ignore
+.gitattributes export-ignore
+stats-permissions_version.json export-ignore

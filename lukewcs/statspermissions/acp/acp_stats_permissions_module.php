@@ -1,6 +1,6 @@
 <?php
 /**
-* 
+*
 * Stats Permissions. An extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
@@ -24,7 +24,7 @@ class acp_stats_permissions_module
 		$this->config = $config;
 		$this->request = $request;
 		$this->template = $template;
-	
+
 		add_form_key('stats_permissions');
 		$this->tpl_name = 'acp_stats_permissions';
 		$this->page_title = $this->user->lang['STATS_PERMISSIONS_NAV_TITLE'] . ' - ' . $this->user->lang['STATS_PERMISSIONS_NAV_CONFIG'];
@@ -39,6 +39,7 @@ class acp_stats_permissions_module
 			$this->config->set('stats_permissions_admin_mode'			, $this->request->variable('stats_permissions_admin_mode', 0));
 			$this->config->set('stats_permissions_use_permissions'		, $this->request->variable('stats_permissions_use_permissions', 0));
 			$this->config->set('stats_permissions_disp_for_guests'		, $this->request->variable('stats_permissions_disp_for_guests', 0));
+			$this->config->set('stats_permissions_disp_for_bots'		, $this->request->variable('stats_permissions_disp_for_bots', 0));
 
 			trigger_error($this->user->lang['STATS_PERMISSIONS_MSG_SAVED_SETTINGS'] . adm_back_link($this->u_action));
 		}
@@ -48,7 +49,8 @@ class acp_stats_permissions_module
 			'STATS_PERMISSIONS_ADMIN_MODE'				=> $this->config['stats_permissions_admin_mode'],
 			'STATS_PERMISSIONS_USE_PERMISSIONS'			=> $this->config['stats_permissions_use_permissions'],
 			'STATS_PERMISSIONS_DISP_FOR_GUESTS'			=> $this->config['stats_permissions_disp_for_guests'],
-			'U_ACTION'						=> $this->u_action,
+			'STATS_PERMISSIONS_DISP_FOR_BOTS'			=> $this->config['stats_permissions_disp_for_bots'],
+			'U_ACTION'									=> $this->u_action,
 		));
 	}
 }

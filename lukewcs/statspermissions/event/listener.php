@@ -1,6 +1,6 @@
 <?php
 /**
-* 
+*
 * Stats Permissions. An extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
@@ -14,30 +14,31 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class listener implements EventSubscriberInterface
 {
-	protected $core;
-	
+	// @lukewcs.statspermissions.core
+	protected $stats_permissions_core;
+
 	public function __construct(
-		$core
+		$stats_permissions_core
 	)
 	{
-		$this->core = $core;
+		$this->statsperm = $stats_permissions_core;
 	}
 
 	static public function getSubscribedEvents()
 	{
 		return array(
 			'core.page_header_after'		=> 'set_permissions',
-			'core.permissions'				=> 'add_permissions', 
+			'core.permissions'				=> 'add_permissions',
 		);
 	}
 
 	public function set_permissions($event)
 	{
-		$this->core->set_permissions($event);
+		$this->statsperm->set_permissions($event);
 	}
 
 	public function add_permissions($event)
 	{
-		$this->core->add_permissions($event);
+		$this->statsperm->add_permissions($event);
 	}
 }

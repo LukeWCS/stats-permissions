@@ -1,15 +1,14 @@
 <?php
 /**
-* 
+*
 * Stats Permissions. An extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
-* Lang_iso     : de_x_sie
-* Lang_ver     : 1.0.0
-* Lang_author  : LukeWCS
-* Lang_tab_size: 4
+* Lang_iso   : de_x_sie
+* Lang_ver   : 1.0.0
+* Lang_author: LukeWCS
 *
 */
 
@@ -24,6 +23,13 @@ if (!defined('IN_PHPBB'))
 if (empty($lang) || !is_array($lang))
 {
 	$lang = array();
+}
+
+$t1 = $t2 = '';
+if (!$GLOBALS['config']['stats_permissions_use_permissions'] || $GLOBALS['config']['stats_permissions_admin_mode'])
+{
+	$t1 = '<span style="opacity: 0.5;">';
+	$t2 = '</span>';
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -42,6 +48,6 @@ if (empty($lang) || !is_array($lang))
 // ’ « » “ ” …
 //
 $lang = array_merge($lang, array(
-	'ACL_U_STATS_PERMISSIONS_SHOW_STATS'	=> 'Kann Statistik sehen',
-	'ACL_U_STATS_PERMISSIONS_SHOW_NEWEST'	=> 'Kann neuestes Mitglied sehen',
+	'ACL_U_STATS_PERMISSIONS_SHOW_STATS'	=> $t1 . 'Kann Statistik sehen' . $t2,
+	'ACL_U_STATS_PERMISSIONS_SHOW_NEWEST'	=> $t1 . 'Kann neuestes Mitglied sehen' . $t2,
 ));
