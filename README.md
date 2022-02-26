@@ -1,5 +1,11 @@
+## >>> ***This extension is under development, do not install it on a live board!*** <<<
+
 ## Stats Permissions
-Extension for phpBB 3.2/3.3 - Set independent permissions for statistic and newest member. The permissions can be set with the full rights system, or with the simplified rights system (display for guests/bots).
+Extension for phpBB - Set independent permissions for statistic and newest member. The permissions can be set with the full permission system, or with the simplified permission system (display for guests/bots).
+
+### Requirements
+* phpBB 3.2.10 up to and including phpBB 3.3
+* PHP 7.0 up to and including PHP 8.0
 
 ### Installation / Update of Stats Permissions
 1. Download and extract the Zip archive of the [GitHub release](https://github.com/LukeWCS/stats-permissions/releases).

@@ -14,16 +14,16 @@ class acp_stats_permissions_info
 {
 	function module()
 	{
-		return array(
+		return [
 			'filename'	=> '\lukewcs\statspermissions\acp\acp_stats_permissions_module',
 			'title'		=> 'STATS_PERMISSIONS_NAV_TITLE',
-			'modes'		=> array(
-				'settings'	=> array(
+			'modes'		=> [
+				'settings'	=> [
 					'title'	=> 'STATS_PERMISSIONS_NAV_CONFIG',
 					'auth'	=> 'ext_lukewcs/statspermissions && acl_a_board',
-					'cat'	=> array('ACP_BOARD_CONFIGURATION')
-				),
-			),
-		);
+					'cat'	=> ['STATS_PERMISSIONS_NAV_TITLE'],
+				],
+			],
+		];
 	}
 }

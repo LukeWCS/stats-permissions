@@ -12,94 +12,81 @@ namespace lukewcs\statspermissions\migrations;
 
 class v_1_0_0 extends \phpbb\db\migration\migration
 {
-	public function effectively_installed()
+	public static function depends_on()
 	{
-		return isset($this->config['stats_permissions_ext_version']) && version_compare($this->config['stats_permissions_ext_version'], '1.0.0', '>=');
-	}
-
-	static public function depends_on()
-	{
-		return array('\phpbb\db\migration\data\v320\v320');
+		return ['\phpbb\db\migration\data\v32x\v3210'];
 	}
 
 	public function update_data()
 	{
-		$data = array();
-		// Add configs
-		$data[] = array('config.add', array('stats_permissions_admin_mode'			, '0'));
-		$data[] = array('config.add', array('stats_permissions_use_permissions'		, '0'));
-		$data[] = array('config.add', array('stats_permissions_disp_for_guests'		, '0'));
-		$data[] = array('config.add', array('stats_permissions_disp_for_bots'		, '2'));
-		// Add permissions
-		$data[] = array('permission.add', array('u_stats_permissions_show_stats'));
-		$data[] = array('permission.add', array('u_stats_permissions_show_newest'));
-		// Set permissions
-		$data[] = array('permission.permission_set', array('ADMINISTRATORS'		, 'u_stats_permissions_show_stats', 'group'));
-		$data[] = array('permission.permission_set', array('ADMINISTRATORS'		, 'u_stats_permissions_show_newest', 'group'));
-		$data[] = array('permission.permission_set', array('GLOBAL_MODERATORS'	, 'u_stats_permissions_show_stats', 'group'));
-		$data[] = array('permission.permission_set', array('GLOBAL_MODERATORS'	, 'u_stats_permissions_show_newest', 'group'));
-		$data[] = array('permission.permission_set', array('REGISTERED'			, 'u_stats_permissions_show_stats', 'group'));
-		$data[] = array('permission.permission_set', array('REGISTERED'			, 'u_stats_permissions_show_newest', 'group'));
-		$data[] = array('permission.permission_set', array('NEWLY_REGISTERED'	, 'u_stats_permissions_show_newest', 'group', false));
-		$data[] = array('permission.permission_set', array('GUESTS'				, 'u_stats_permissions_show_stats', 'group'));
-		// Set permission roles
+		$data = [];
+		$data[] = ['config.add', ['stats_permissions_admin_mode'		, '0']];
+		$data[] = ['config.add', ['stats_permissions_use_permissions'	, '0']];
+		$data[] = ['config.add', ['stats_permissions_disp_for_guests'	, '1']];
+		$data[] = ['config.add', ['stats_permissions_disp_for_bots'		, '0']];
+		$data[] = ['permission.add', ['u_stats_permissions_show_stats']];
+		$data[] = ['permission.add', ['u_stats_permissions_show_newest']];
+		$data[] = ['permission.permission_set', ['ADMINISTRATORS'		, 'u_stats_permissions_show_stats', 'group']];
+		$data[] = ['permission.permission_set', ['ADMINISTRATORS'		, 'u_stats_permissions_show_newest', 'group']];
+		$data[] = ['permission.permission_set', ['GLOBAL_MODERATORS'	, 'u_stats_permissions_show_stats', 'group']];
+		$data[] = ['permission.permission_set', ['GLOBAL_MODERATORS'	, 'u_stats_permissions_show_newest', 'group']];
+		$data[] = ['permission.permission_set', ['REGISTERED'			, 'u_stats_permissions_show_stats', 'group']];
+		$data[] = ['permission.permission_set', ['REGISTERED'			, 'u_stats_permissions_show_newest', 'group']];
+		$data[] = ['permission.permission_set', ['NEWLY_REGISTERED'		, 'u_stats_permissions_show_newest', 'group', false]];
+		$data[] = ['permission.permission_set', ['GUESTS'				, 'u_stats_permissions_show_stats', 'group']];
 		if ($this->role_exists('ROLE_USER_STANDARD'))
 		{
-			$data[] = array('permission.permission_set', array('ROLE_USER_STANDARD'		, 'u_stats_permissions_show_stats', 'role'));
-			$data[] = array('permission.permission_set', array('ROLE_USER_STANDARD'		, 'u_stats_permissions_show_newest', 'role'));
+			$data[] = ['permission.permission_set', ['ROLE_USER_STANDARD'	, 'u_stats_permissions_show_stats', 'role']];
+			$data[] = ['permission.permission_set', ['ROLE_USER_STANDARD'	, 'u_stats_permissions_show_newest', 'role']];
 		}
 		if ($this->role_exists('ROLE_USER_LIMITED'))
 		{
-			$data[] = array('permission.permission_set', array('ROLE_USER_LIMITED'		, 'u_stats_permissions_show_stats', 'role'));
-			$data[] = array('permission.permission_set', array('ROLE_USER_LIMITED'		, 'u_stats_permissions_show_newest', 'role'));
+			$data[] = ['permission.permission_set', ['ROLE_USER_LIMITED'	, 'u_stats_permissions_show_stats', 'role']];
+			$data[] = ['permission.permission_set', ['ROLE_USER_LIMITED'	, 'u_stats_permissions_show_newest', 'role']];
 		}
 		if ($this->role_exists('ROLE_USER_FULL'))
 		{
-			$data[] = array('permission.permission_set', array('ROLE_USER_FULL'			, 'u_stats_permissions_show_stats', 'role'));
-			$data[] = array('permission.permission_set', array('ROLE_USER_FULL'			, 'u_stats_permissions_show_newest', 'role'));
+			$data[] = ['permission.permission_set', ['ROLE_USER_FULL'		, 'u_stats_permissions_show_stats', 'role']];
+			$data[] = ['permission.permission_set', ['ROLE_USER_FULL'		, 'u_stats_permissions_show_newest', 'role']];
 		}
 		if ($this->role_exists('ROLE_USER_NOPM'))
 		{
-			$data[] = array('permission.permission_set', array('ROLE_USER_NOPM'			, 'u_stats_permissions_show_stats', 'role'));
-			$data[] = array('permission.permission_set', array('ROLE_USER_NOPM'			, 'u_stats_permissions_show_newest', 'role'));
+			$data[] = ['permission.permission_set', ['ROLE_USER_NOPM'		, 'u_stats_permissions_show_stats', 'role']];
+			$data[] = ['permission.permission_set', ['ROLE_USER_NOPM'		, 'u_stats_permissions_show_newest', 'role']];
 		}
 		if ($this->role_exists('ROLE_USER_NOAVATAR'))
 		{
-			$data[] = array('permission.permission_set', array('ROLE_USER_NOAVATAR'		, 'u_stats_permissions_show_stats', 'role'));
-			$data[] = array('permission.permission_set', array('ROLE_USER_NOAVATAR'		, 'u_stats_permissions_show_newest', 'role'));
+			$data[] = ['permission.permission_set', ['ROLE_USER_NOAVATAR'	, 'u_stats_permissions_show_stats', 'role']];
+			$data[] = ['permission.permission_set', ['ROLE_USER_NOAVATAR'	, 'u_stats_permissions_show_newest', 'role']];
 		}
 		if ($this->role_exists('ROLE_USER_NEW_MEMBER'))
 		{
-			$data[] = array('permission.permission_set', array('ROLE_USER_NEW_MEMBER'	, 'u_stats_permissions_show_newest', 'role', false));
+			$data[] = ['permission.permission_set', ['ROLE_USER_NEW_MEMBER'	, 'u_stats_permissions_show_newest', 'role', false]];
 		}
-		// Add ACP modules
-		$data[] = array('module.add', array(
+		$data[] = ['module.add', [
 			'acp',
 			'ACP_CAT_DOT_MODS',
 			'STATS_PERMISSIONS_NAV_TITLE'
-		));
-		$data[] = array('module.add', array(
+		]];
+		$data[] = ['module.add', [
 			'acp',
 			'STATS_PERMISSIONS_NAV_TITLE',
-			array(
+			[
 				'module_basename'	=> '\lukewcs\statspermissions\acp\acp_stats_permissions_module',
 				'module_langname'	=> 'STATS_PERMISSIONS_NAV_CONFIG',
 				'module_mode'		=> 'overview',
 				'module_auth'		=> 'ext_lukewcs/statspermissions && acl_a_board',
-		)));
-		// Set current version
-		$data[] = array('config.add', array('stats_permissions_ext_version'				, '1.0.0'));
+		]]];
 
 		return $data;
 	}
 
 	public function revert_data()
 	{
-		return(array(
-			// Remove permissions
-			array('permission.remove', array('u_stats_permissions_show_stats')),
-			array('permission.remove', array('u_stats_permissions_show_newest')),
-		));
+		return([
+			['permission.remove', ['u_stats_permissions_show_stats']],
+			['permission.remove', ['u_stats_permissions_show_newest']],
+		]);
 	}
 
 	private function role_exists($role)

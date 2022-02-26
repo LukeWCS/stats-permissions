@@ -12,3 +12,4 @@ services:
             - '@template'
             - '@auth'
             - '@user'
+            - '@language'

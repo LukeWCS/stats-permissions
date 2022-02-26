@@ -14,7 +14,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class listener implements EventSubscriberInterface
 {
-	// @lukewcs.statspermissions.core
 	protected $stats_permissions_core;
 
 	public function __construct(
@@ -24,17 +23,17 @@ class listener implements EventSubscriberInterface
 		$this->statsperm = $stats_permissions_core;
 	}
 
-	static public function getSubscribedEvents()
+	public static function getSubscribedEvents()
 	{
-		return array(
-			'core.page_header_after'		=> 'set_permissions',
+		return [
+			'core.page_header_after'		=> 'set_template_vars',
 			'core.permissions'				=> 'add_permissions',
-		);
+		];
 	}
 
-	public function set_permissions($event)
+	public function set_template_vars()
 	{
-		$this->statsperm->set_permissions($event);
+		$this->statsperm->set_template_vars();
 	}
 
 	public function add_permissions($event)

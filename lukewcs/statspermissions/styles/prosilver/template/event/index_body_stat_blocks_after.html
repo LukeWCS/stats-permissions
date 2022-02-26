@@ -3,7 +3,12 @@
 		<h3>{{ lang('STATISTICS') }}</h3>
 		<p>
 			{% EVENT index_body_block_stats_prepend %}
-			{% if STATSPERM_STATS %}{{ TOTAL_POSTS }} &bull; {{ TOTAL_TOPICS }} &bull; {{ TOTAL_USERS }}{% endif %}{% if STATSPERM_NEWEST %}{{ STATSPERM_STATS ? ' &bull; '}}{{ NEWEST_USER_STATSPERM }}{% endif %}
+			{% if STATSPERM_STATS %}
+				{{ TOTAL_POSTS }} &bull; {{ TOTAL_TOPICS }} &bull; {{ TOTAL_USERS }}
+			{% endif %}
+			{% if STATSPERM_NEWEST %}
+				{{ STATSPERM_STATS ? ' &bull; '}}{{ NEWEST_USER_STATSPERM }}
+			{% endif %}
 			{% EVENT index_body_block_stats_append %}
 		</p>
 	</div>
