@@ -4,7 +4,7 @@
 	"description": "Set independent permissions for statistic and newest member. The permissions can be set with the full permission system, or with the simplified permission system (display for guests/bots).",
 	"homepage": "https://github.com/LukeWCS/stats-permissions",
 	"version": "1.0.0-rc1",
-	"time": "2022-02-26",
+	"time": "2022-02-27",
 	"license": "GPL-2.0-only",
 	"authors": [
 		{
@@ -23,12 +23,6 @@
 		"lang-min-ver": "1.0.0-rc1",
 		"soft-require": {
 			"phpbb/phpbb": ">=3.2.10,<3.4.0@dev"
-		},
-		"version-check": {
-			"host": "raw.githubusercontent.com",
-			"directory": "/LukeWCS/stats-permissions/master",
-			"filename": "stats-permissions_version.json",
-			"ssl": true
 		}
 	}
 }

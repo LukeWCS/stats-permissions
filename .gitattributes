@@ -3,4 +3,5 @@
 .editorconfig export-ignore
 .gitattributes export-ignore
 stats-permissions_build_changelog.md export-ignore
+stats-permissions_changelog_de.md
 stats-permissions_version.json export-ignore

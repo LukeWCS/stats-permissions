@@ -1,5 +1,9 @@
 #### Builds 1.0.0
 
+* b5:
+  * `composer.json` aktualisiert, ausserdem Versionsprüfung entfernt.
+  * GitHub: Versionsdatei entfernt.
+  * GitHub: `.gitattributes` angepasst.
 * b4:
   * GitHub: Offizielles Changelog hinzugefügt.
   * GitHub: `README.md` angepasst.
