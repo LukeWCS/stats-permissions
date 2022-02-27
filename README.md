@@ -1,5 +1,3 @@
-## >>> ***This extension is under development, do not install it on a live board!*** <<<
-
 ## Stats Permissions
 Extension for phpBB - Set independent permissions for statistic and newest member. The permissions can be set with the full permission system, or with the simplified permission system (display for guests/bots).
 
