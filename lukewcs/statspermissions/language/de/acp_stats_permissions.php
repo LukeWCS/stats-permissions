@@ -44,7 +44,7 @@ $lang = array_merge($lang, [
 
 	// config head
 	'STATS_PERMISSIONS_CONFIG_TITLE'				=> 'Statistik-Berechtigungen',
-	'STATS_PERMISSIONS_CONFIG_DESC' 				=> 'Hier können die Einstellungen für die Erweiterung „%1$s“ (v%2$s) geändert werden.',
+	'STATS_PERMISSIONS_CONFIG_DESC' 				=> 'Hier kannst du die Einstellungen für die Erweiterung <strong>%1$s (v%2$s)</strong> ändern.',
 
 	// config section 1
 	'STATS_PERMISSIONS_SECTION_PERMISSIONS'			=> 'Berechtigungen',

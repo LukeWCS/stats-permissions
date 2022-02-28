@@ -1,6 +1,10 @@
 #### Builds 1.0.0
 
-* b6 (RC1):
+* b7 (RC1):
+  * `composer.json` aktualisiert.
+  * Kleinere Änderungen in den Sprachdateien.
+  * GitHub: `README.md` aktualisiert.
+* b6:
   * GitHub: GitHub Actions eingerichtet.
 * b5:
   * `composer.json` aktualisiert, ausserdem Versionsprüfung entfernt.

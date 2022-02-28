@@ -1,10 +1,10 @@
 {
 	"name": "lukewcs/statspermissions",
 	"type": "phpbb-extension",
-	"description": "Set independent permissions for statistic and newest member. The permissions can be set with the full permission system, or with the simplified permission system (display for guests/bots).",
+	"description": "Allows to define independent permissions for viewing statistics and newest member.",
 	"homepage": "https://github.com/LukeWCS/stats-permissions",
 	"version": "1.0.0-rc1",
-	"time": "2022-02-27",
+	"time": "2022-02-28",
 	"license": "GPL-2.0-only",
 	"authors": [
 		{
