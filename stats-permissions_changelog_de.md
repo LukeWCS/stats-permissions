@@ -6,6 +6,9 @@
 * Das PHP Event `lukewcs.statspermissions.display_condition` eingebaut, mit dem bestimmte Variablen übersteuert werden können um das Verhalten von StatsPerm zu ändern. Hilfreich für Bridge-Entwickler. Die folgenden Event-Variablen werden erstmalig unterstützt: 
   * force_api_mode: Erzwingt den API-Modus damit StatsPerm nicht angezeigt wird, sondern lediglich die Template Variablen erzeugt werden.
 * Versionsprüfung hinzugefügt.
+* Template Änderungen:
+  * API-Modus hinzugefügt.
+  * Die von phpBB nicht genutzte CSS Klasse `statistics` in `statsperm-statistics` umbenannt. (Vorschlag von: Kirk) 
 
 #### 1.0.0-rc1 Release
 

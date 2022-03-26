@@ -1,5 +1,8 @@
 #### Builds 1.0.0
 
+* b10:
+  * GitHub: `.gitattributes` ergänzt.
+  * Changelog ergänzt.
 * b9:
   * GitHub: `.gitattributes` angepasst, `docs/` hinzugefügt.
 * b8 (Release):
