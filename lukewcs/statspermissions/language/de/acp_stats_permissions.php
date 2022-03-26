@@ -39,7 +39,7 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, [
 	// language pack author
 	'STATS_PERMISSIONS_LANG_DESC'					=> 'Deutsch (Du)',
-	'STATS_PERMISSIONS_LANG_EXT_VER' 				=> '1.0.0-rc1',
+	'STATS_PERMISSIONS_LANG_EXT_VER' 				=> '1.0.0',
 	'STATS_PERMISSIONS_LANG_AUTHOR' 				=> 'LukeWCS',
 
 	// config head

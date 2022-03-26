@@ -1,5 +1,10 @@
 #### Builds 1.0.0
 
+* b8 (Release):
+  * API-Modus eingebaut.
+  * Event `lukewcs.statspermissions.display_condition` eingebaut.
+  * Versionsprüfung hinzugefügt.
+  * GitHub: GitHub Pages eingerichtet für Versionsprüfung.
 * b7 (RC1):
   * `composer.json` aktualisiert.
   * Kleinere Änderungen in den Sprachdateien.

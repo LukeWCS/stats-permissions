@@ -28,6 +28,7 @@ class stats_permissions
 		\phpbb\template\template $template,
 		\phpbb\auth\auth $auth,
 		\phpbb\user $user,
+		\phpbb\event\dispatcher_interface $dispatcher,
 		$language
 	)
 	{
@@ -35,11 +36,26 @@ class stats_permissions
 		$this->template = $template;
 		$this->auth = $auth;
 		$this->user = $user;
+		$this->phpbb_dispatcher = $dispatcher;
 		$this->language = $language;
 	}
 
 	public function set_template_vars()
 	{
+		$force_api_mode = false;
+
+		/**
+		* Overriding the variables that regulate the conditions for the Stats Permissions display.
+		*
+		* @event lukewcs.statspermissions.display_condition
+		* @var  bool  force_api_mode  Forces the API mode so that Stats Permissions is not displayed, but only the template variables are generated.
+		* @since 1.0.0
+		*/
+		$vars = ['force_api_mode'];
+		extract($this->phpbb_dispatcher->trigger_event('lukewcs.statspermissions.display_condition', compact($vars)));
+
+		$force_api_mode = ($force_api_mode === true);
+
 		// Set display permission variables
 		if ($this->config['stats_permissions_admin_mode'])
 		{
@@ -90,6 +106,7 @@ class stats_permissions
 			'NEWEST_USER'			=> false,
 			'STATSPERM_STATS'		=> $permission_stats,
 			'STATSPERM_NEWEST'		=> $permission_newest,
+			'STATSPERM_API_MODE'	=> $force_api_mode,
 		]);
 	}
 

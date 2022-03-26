@@ -1,5 +1,5 @@
-{% if STATSPERM_STATS || STATSPERM_NEWEST %}
-	<div class="stat-block statistics">
+{% if (STATSPERM_STATS || STATSPERM_NEWEST) && !STATSPERM_API_MODE %}
+	<div class="stat-block statsperm-statistics">
 		<h3>{{ lang('STATISTICS') }}</h3>
 		<p>
 			{% EVENT index_body_block_stats_prepend %}
