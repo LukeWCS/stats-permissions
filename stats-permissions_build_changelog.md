@@ -1,5 +1,7 @@
 #### Builds 1.0.0
 
+* b9:
+  * GitHub: `.gitattributes` angepasst, `docs/` hinzugefügt.
 * b8 (Release):
   * API-Modus eingebaut.
   * Event `lukewcs.statspermissions.display_condition` eingebaut.
