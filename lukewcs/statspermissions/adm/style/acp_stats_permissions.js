@@ -7,39 +7,66 @@
 *
 */
 
-'use strict';
+statspermissionsACP = {};
 
-var statspermissionsACP = {
-	SetState: function () {
-		const enabled = "1.0";
-		const disabled = "0.35";
+statspermissionsACP.constants = Object.freeze({
+	PermNothing		: 0,
+	PermStats		: 1,
+	PermUsers		: 2,
+	PermStatsUsers	: 3,
 
-		$('#stats_permissions_opt_use_permissions').css('opacity', (
-				$('#stats_permissions_admin_mode_no').prop('checked')
-			) ? enabled : disabled
-		);
-		$('#stats_permissions_opt_disp_for_guests').css('opacity', (
-				$('#stats_permissions_admin_mode_no').prop('checked')
-				&& $('#stats_permissions_use_permissions_no').prop('checked')
-			) ? enabled : disabled
-		);
-		$('#stats_permissions_opt_disp_for_bots').css('opacity', (
-				$('#stats_permissions_admin_mode_no').prop('checked')
-				&& $('#stats_permissions_use_permissions_no').prop('checked')
-			) ? enabled : disabled
-		);
-	},
-	SetDefaults: function () {
-		$('#stats_permissions_admin_mode_no'			).prop('checked'	, true);
-		$('#stats_permissions_use_permissions_no'		).prop('checked'	, true);
-		$('#stats_permissions_perm_for_guests_stats'	).prop('selected'	, true);
-		$('#stats_permissions_perm_for_bots_nothing'	).prop('selected'	, true);
-		statspermissionsACP.SetState();
-	},
-	CustomFormReset: function () {
-		$('#stats_permissions_form').trigger('reset');
-		statspermissionsACP.SetState();
-	}
+	OpacityEnabled	: '1.0',
+	OpacityDisabled	: '0.35',
+});
+
+statspermissionsACP.setState = function () {
+	'use strict';
+
+	var c = statspermissionsACP.constants;
+
+	$('#stats_permissions_opt_use_permissions').css('opacity', (
+			$('input[name="stats_permissions_admin_mode"]').prop('checked') == false
+		) ? c.OpacityEnabled : c.OpacityDisabled
+	);
+	$('#stats_permissions_opt_disp_for_guests').css('opacity', (
+			$('input[name="stats_permissions_admin_mode"]').prop('checked') == false
+			&& $('input[name="stats_permissions_use_permissions"]').prop('checked') == false
+		) ? c.OpacityEnabled : c.OpacityDisabled
+	);
+	$('#stats_permissions_opt_disp_for_bots').css('opacity', (
+			$('input[name="stats_permissions_admin_mode"]').prop('checked') == false
+			&& $('input[name="stats_permissions_use_permissions"]').prop('checked') == false
+		) ? c.OpacityEnabled : c.OpacityDisabled
+	);
 };
 
-$(window).ready(statspermissionsACP.SetState);
+statspermissionsACP.setDefaults = function () {
+	'use strict';
+
+	var c = statspermissionsACP.constants;
+
+	$('input[name="stats_permissions_admin_mode"]'			).prop('checked'	, false);
+	$('input[name="stats_permissions_use_permissions"]'		).prop('checked'	, false);
+	$('select[name="stats_permissions_disp_for_guests"]'	).prop('value'		, c.PermStats);
+	$('select[name="stats_permissions_disp_for_bots"]'		).prop('value'		, c.PermNothing);
+
+	statspermissionsACP.setState();
+};
+
+statspermissionsACP.customFormReset = function () {
+	'use strict';
+
+	$('#stats_permissions_form').trigger('reset');
+	statspermissionsACP.setState();
+};
+
+$(window).ready(function() {
+	'use strict';
+
+	statspermissionsACP.setState();
+
+	$('input[name="stats_permissions_admin_mode"]'		).on('change'	, statspermissionsACP.setState);
+	$('input[name="stats_permissions_use_permissions"]'	).on('change'	, statspermissionsACP.setState);
+	$('input[name="stats_permissions_defaults"]'		).on('click'	, statspermissionsACP.setDefaults);
+	$('input[name="form_reset"]'						).on('click'	, statspermissionsACP.customFormReset);
+});

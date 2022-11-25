@@ -30,14 +30,21 @@ class acp_stats_permissions_module
 		$this->template = $template;
 		$this->language = $language;
 		$this->md_manager = $phpbb_container->get('ext.manager')->create_extension_metadata_manager('lukewcs/statspermissions');
-		$notes = '';
-
-		$ext_display_name = $this->md_manager->get_metadata('display-name');
-		$ext_display_ver = $this->md_manager->get_metadata('version');
-		$ext_lang_min_ver = $this->md_manager->get_metadata()['extra']['lang-min-ver'];
+		$this_meta = $this->md_manager->get_metadata('all');
+		$notes = [];
 
 		$this->language->add_lang(['acp_stats_permissions'], 'lukewcs/statspermissions');
-		$lang_ver = $this->language->is_set('STATS_PERMISSIONS_LANG_EXT_VER') ? $this->language->lang('STATS_PERMISSIONS_LANG_EXT_VER') : '0.0.0';
+
+		$ext_display_name	= $this_meta['extra']['display-name'];
+		$ext_ver			= $this_meta['version'];
+		$ext_lang_min_ver	= $this_meta['extra']['lang-min-ver'];
+
+		$ext_lang_ver 		= $this->get_lang_ver('STATS_PERMISSIONS_LANG_EXT_VER');
+		$lang_outdated_msg	= $this->check_lang_ver($ext_display_name, $ext_lang_ver, $ext_lang_min_ver, 'STATS_PERMISSIONS_MSG_LANGUAGEPACK_OUTDATED');
+		if ($lang_outdated_msg)
+		{
+			$notes[] = $lang_outdated_msg;
+		}
 
 		$this->tpl_name = 'acp_stats_permissions';
 		$this->page_title = $this->user->lang['STATS_PERMISSIONS_NAV_TITLE'] . ' - ' . $this->user->lang['STATS_PERMISSIONS_NAV_CONFIG'];
@@ -59,22 +66,10 @@ class acp_stats_permissions_module
 			trigger_error($this->user->lang['STATS_PERMISSIONS_MSG_SAVED_SETTINGS'] . adm_back_link($this->u_action));
 		}
 
-		if (phpbb_version_compare($ext_lang_min_ver, $lang_ver, '>'))
-		{
-			if ($this->language->is_set('STATS_PERMISSIONS_MSG_LANGUAGEPACK_OUTDATED'))
-			{
-				$this->add_note($notes, $this->language->lang('STATS_PERMISSIONS_MSG_LANGUAGEPACK_OUTDATED'));
-			}
-			else // Fallback if the current language package does not yet have the required variable.
-			{
-				$this->add_note($notes, 'Note: The language pack for this extension is no longer up-to-date.');
-			}
-		}
-
 		$this->template->assign_vars([
 			// heading
 			'STATS_PERMISSIONS_EXT_NAME'				=> $ext_display_name,
-			'STATS_PERMISSIONS_EXT_VER'					=> $ext_display_ver,
+			'STATS_PERMISSIONS_EXT_VER'					=> $ext_ver,
 			'STATS_PERMISSIONS_NOTES'					=> $notes,
 			// config section 1
 			'STATS_PERMISSIONS_ADMIN_MODE'				=> $this->config['stats_permissions_admin_mode'],
@@ -86,8 +81,30 @@ class acp_stats_permissions_module
 		]);
 	}
 
-	private function add_note(string &$notes, string $msg)
+	// Determine the version of the language pack with fallback to 0.0.0
+	private function get_lang_ver(string $lang_ext_ver): string
 	{
-		$notes .= (($notes != '') ? "\n" : "") . sprintf('<p>%s</p>', $msg);
+		return ($this->language->is_set($lang_ext_ver) ? preg_replace('/[^0-9.]/', '', $this->language->lang($lang_ext_ver)) : '0.0.0');
+	}
+
+	// Check the language pack version for the minimum version and generate notice if outdated
+	private function check_lang_ver(string $ext_name, string $ext_lang_ver, string $ext_lang_min_ver, string $lang_outdated_var): string
+	{
+		$lang_outdated_msg = '';
+
+		if (phpbb_version_compare($ext_lang_ver, $ext_lang_min_ver, '<'))
+		{
+			if ($this->language->is_set($lang_outdated_var))
+			{
+				$lang_outdated_msg = $this->language->lang($lang_outdated_var);
+			}
+			else // Fallback if the current language package does not yet have the required variable.
+			{
+				$lang_outdated_msg = 'Note: The language pack for the extension <strong>%1$s</strong> is no longer up-to-date. (installed: %2$s / needed: %3$s)';
+			}
+			$lang_outdated_msg = sprintf($lang_outdated_msg, $ext_name, $ext_lang_ver, $ext_lang_min_ver);
+		}
+
+		return $lang_outdated_msg;
 	}
 }

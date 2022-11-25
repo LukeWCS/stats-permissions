@@ -39,12 +39,12 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, [
 	// language pack author
 	'STATS_PERMISSIONS_LANG_DESC'					=> 'English',
-	'STATS_PERMISSIONS_LANG_EXT_VER' 				=> '1.0.0',
+	'STATS_PERMISSIONS_LANG_EXT_VER' 				=> '1.0.1',
 	'STATS_PERMISSIONS_LANG_AUTHOR' 				=> 'LukeWCS',
 
 	// config head
 	'STATS_PERMISSIONS_CONFIG_TITLE'				=> 'Stats Permissions',
-	'STATS_PERMISSIONS_CONFIG_DESC' 				=> 'Here you can change the settings for the <strong>%1$s (v%2$s)</strong> extension.',
+	'STATS_PERMISSIONS_CONFIG_DESC' 				=> 'Here you can change the settings for the <strong>%s</strong> extension.',
 
 	// config section 1
 	'STATS_PERMISSIONS_SECTION_PERMISSIONS'			=> 'Permissions',
@@ -69,5 +69,5 @@ $lang = array_merge($lang, [
 
 	// messages
 	'STATS_PERMISSIONS_MSG_SAVED_SETTINGS'			=> 'Stats Permissions: Configuration updated successfully.',
-	'STATS_PERMISSIONS_MSG_LANGUAGEPACK_OUTDATED'	=> 'Note: The language pack for this extension is no longer up-to-date.',
+	'STATS_PERMISSIONS_MSG_LANGUAGEPACK_OUTDATED'	=> 'Note: The language pack for the extension <strong>%1$s</strong> is no longer up-to-date. (installed: %2$s / needed: %3$s)',
 ]);

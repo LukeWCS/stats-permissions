@@ -11,50 +11,50 @@
 <a id="maincontent"></a>
 
 <h1>{{ lang('STATS_PERMISSIONS_CONFIG_TITLE') }}</h1>
-<p>{{ lang('STATS_PERMISSIONS_CONFIG_DESC', STATS_PERMISSIONS_EXT_NAME, STATS_PERMISSIONS_EXT_VER) }}</p>
+<p>{{ lang('STATS_PERMISSIONS_CONFIG_DESC', STATS_PERMISSIONS_EXT_NAME) }}</p>
 
-{% if STATS_PERMISSIONS_NOTES %}
-<div class="errorbox notice">
-	{{ STATS_PERMISSIONS_NOTES }}
-</div>
+{% if STATS_PERMISSIONS_NOTES|length %}
+	<div class="errorbox notice">
+		{% for note in STATS_PERMISSIONS_NOTES %}
+			<p>{{ note }}</p>
+		{% endfor %}
+	</div>
 {% endif %}
 
 <form id="stats_permissions_form" method="post" action="{{ U_ACTION }}">
 	<fieldset>
 		<legend>{{ lang('STATS_PERMISSIONS_SECTION_PERMISSIONS') }}</legend>
 		<dl id="stats_permissions_opt_admin_mode">
-			<dt><label>{{ lang('STATS_PERMISSIONS_ADMIN_MODE') ~ lang('COLON') }}</label><br /><span>{{ lang('STATS_PERMISSIONS_ADMIN_MODE_EXP') }}</span></dt>
+			<dt><label>{{ lang('STATS_PERMISSIONS_ADMIN_MODE') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_ADMIN_MODE_EXP') }}</span></dt>
 			<dd>
-				<label><input type="radio" class="radio" name="stats_permissions_admin_mode" id="stats_permissions_admin_mode_yes" value="1" onchange="statspermissionsACP.SetState()" {{ STATS_PERMISSIONS_ADMIN_MODE == 1 ? 'checked="checked"' }} /> {{ lang('YES') }}</label>
-				<label><input type="radio" class="radio" name="stats_permissions_admin_mode" id="stats_permissions_admin_mode_no"  value="0" onchange="statspermissionsACP.SetState()" {{ STATS_PERMISSIONS_ADMIN_MODE == 0 ? 'checked="checked"' }} /> {{ lang('NO') }}</label>
+				{{ _self.switch('stats_permissions_admin_mode', STATS_PERMISSIONS_ADMIN_MODE) }}
 			</dd>
 		</dl>
 		<dl id="stats_permissions_opt_use_permissions">
-			<dt><label>{{ lang('STATS_PERMISSIONS_USE_PERMISSIONS') ~ lang('COLON') }}</label><br /><span>{{ lang('STATS_PERMISSIONS_USE_PERMISSIONS_EXP') }}</span></dt>
+			<dt><label>{{ lang('STATS_PERMISSIONS_USE_PERMISSIONS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_USE_PERMISSIONS_EXP') }}</span></dt>
 			<dd>
-				<label><input type="radio" class="radio" name="stats_permissions_use_permissions" id="stats_permissions_use_permissions_yes" value="1" onchange="statspermissionsACP.SetState()" {{ STATS_PERMISSIONS_USE_PERMISSIONS == 1 ? 'checked="checked"' }} /> {{ lang('YES') }}</label>
-				<label><input type="radio" class="radio" name="stats_permissions_use_permissions" id="stats_permissions_use_permissions_no"  value="0" onchange="statspermissionsACP.SetState()" {{ STATS_PERMISSIONS_USE_PERMISSIONS == 0 ? 'checked="checked"' }} /> {{ lang('NO') }}</label>
+				{{ _self.switch('stats_permissions_use_permissions', STATS_PERMISSIONS_USE_PERMISSIONS) }}
 			</dd>
 		</dl>
 		<dl id="stats_permissions_opt_disp_for_guests">
-			<dt><label>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS') ~ lang('COLON') }}</label><br /><span>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS_EXP') }}</span></dt>
+			<dt><label>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS_EXP') }}</span></dt>
 			<dd>
 				<select name="stats_permissions_disp_for_guests">
-					<option id="stats_permissions_perm_for_guests_stats_newest" value="3" {{ STATS_PERMISSIONS_DISP_FOR_GUESTS == 3 ? 'selected="selected"' }}>{{ lang('STATS_PERMISSIONS_PERM_STATS_NEWEST') }}</option>
-					<option id="stats_permissions_perm_for_guests_newest"       value="2" {{ STATS_PERMISSIONS_DISP_FOR_GUESTS == 2 ? 'selected="selected"' }}>{{ lang('STATS_PERMISSIONS_PERM_NEWEST') }}</option>
-					<option id="stats_permissions_perm_for_guests_stats"        value="1" {{ STATS_PERMISSIONS_DISP_FOR_GUESTS == 1 ? 'selected="selected"' }}>{{ lang('STATS_PERMISSIONS_PERM_STATS') }}</option>
-					<option id="stats_permissions_perm_for_guests_nothing"      value="0" {{ STATS_PERMISSIONS_DISP_FOR_GUESTS == 0 ? 'selected="selected"' }}>{{ lang('STATS_PERMISSIONS_PERM_NOTHING') }}</option>
+					<option value="3"{{ STATS_PERMISSIONS_DISP_FOR_GUESTS == 3 ? ' selected' }}>{{ lang('STATS_PERMISSIONS_PERM_STATS_NEWEST') }}</option>
+					<option value="2"{{ STATS_PERMISSIONS_DISP_FOR_GUESTS == 2 ? ' selected' }}>{{ lang('STATS_PERMISSIONS_PERM_NEWEST') }}</option>
+					<option value="1"{{ STATS_PERMISSIONS_DISP_FOR_GUESTS == 1 ? ' selected' }}>{{ lang('STATS_PERMISSIONS_PERM_STATS') }}</option>
+					<option value="0"{{ STATS_PERMISSIONS_DISP_FOR_GUESTS == 0 ? ' selected' }}>{{ lang('STATS_PERMISSIONS_PERM_NOTHING') }}</option>
 				</select>
 			</dd>
 		</dl>
 		<dl id="stats_permissions_opt_disp_for_bots">
-			<dt><label>{{ lang('STATS_PERMISSIONS_DISP_FOR_BOTS') ~ lang('COLON') }}</label><br /><span>{{ lang('STATS_PERMISSIONS_DISP_FOR_BOTS_EXP') }}</span></dt>
+			<dt><label>{{ lang('STATS_PERMISSIONS_DISP_FOR_BOTS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_DISP_FOR_BOTS_EXP') }}</span></dt>
 			<dd>
 				<select name="stats_permissions_disp_for_bots">
-					<option id="stats_permissions_perm_for_bots_stats_newest" value="3" {{ STATS_PERMISSIONS_DISP_FOR_BOTS == 3 ? 'selected="selected"' }}>{{ lang('STATS_PERMISSIONS_PERM_STATS_NEWEST') }}</option>
-					<option id="stats_permissions_perm_for_bots_newest"       value="2" {{ STATS_PERMISSIONS_DISP_FOR_BOTS == 2 ? 'selected="selected"' }}>{{ lang('STATS_PERMISSIONS_PERM_NEWEST') }}</option>
-					<option id="stats_permissions_perm_for_bots_stats"        value="1" {{ STATS_PERMISSIONS_DISP_FOR_BOTS == 1 ? 'selected="selected"' }}>{{ lang('STATS_PERMISSIONS_PERM_STATS') }}</option>
-					<option id="stats_permissions_perm_for_bots_nothing"      value="0" {{ STATS_PERMISSIONS_DISP_FOR_BOTS == 0 ? 'selected="selected"' }}>{{ lang('STATS_PERMISSIONS_PERM_NOTHING') }}</option>
+					<option value="3"{{ STATS_PERMISSIONS_DISP_FOR_BOTS == 3 ? ' selected' }}>{{ lang('STATS_PERMISSIONS_PERM_STATS_NEWEST') }}</option>
+					<option value="2"{{ STATS_PERMISSIONS_DISP_FOR_BOTS == 2 ? ' selected' }}>{{ lang('STATS_PERMISSIONS_PERM_NEWEST') }}</option>
+					<option value="1"{{ STATS_PERMISSIONS_DISP_FOR_BOTS == 1 ? ' selected' }}>{{ lang('STATS_PERMISSIONS_PERM_STATS') }}</option>
+					<option value="0"{{ STATS_PERMISSIONS_DISP_FOR_BOTS == 0 ? ' selected' }}>{{ lang('STATS_PERMISSIONS_PERM_NOTHING') }}</option>
 				</select>
 			</dd>
 		</dl> 	</fieldset>
@@ -62,25 +62,36 @@
 	<fieldset>
 		<legend>{{ lang('STATS_PERMISSIONS_SECTION_RESET') }}</legend>
 		<dl id="stats_permissions_opt_defaults">
-			<dt><label>{{ lang('STATS_PERMISSIONS_DEFAULTS') ~ lang('COLON') }}</label><br /><span>{{ lang('STATS_PERMISSIONS_DEFAULTS_EXP') }}</span></dt>
+			<dt><label>{{ lang('STATS_PERMISSIONS_DEFAULTS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_DEFAULTS_EXP') }}</span></dt>
 			<dd>
-				<input class="button2" type="button" id="stats_permissions_defaults" name="stats_permissions_defaults" value="{{ lang('STATS_PERMISSIONS_BUTTON_DEFAULTS') }}" onclick="statspermissionsACP.SetDefaults()" />
+				<input class="button2" type="button" name="stats_permissions_defaults" value="{{ lang('STATS_PERMISSIONS_BUTTON_DEFAULTS') }}">
 			</dd>
 		</dl>
 	</fieldset>
 
-	<p class="submit-buttons">
-		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
-		<input class="button2" type="button" id="form_reset" name="form_reset" value="{{ lang('RESET') }}" onclick="statspermissionsACP.CustomFormReset()" />
-	</p>
-{{ S_FORM_TOKEN }}
+	<fieldset>
+		<legend class="legend_sub">{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
+
+		<p class="submit-buttons">
+			<input class="button1" type="submit" name="submit" value="{{ lang('SUBMIT') }}">&nbsp;
+			<input class="button2" type="button" name="form_reset" value="{{ lang('RESET') }}">
+		</p>
+	</fieldset>
+
+	{{ S_FORM_TOKEN }}
 </form>
 
 <p class="stats_permissions_copyright">
-	{{ STATS_PERMISSIONS_EXT_NAME }} &copy; LukeWCS<br />
-	{{ lang('STATS_PERMISSIONS_LANG_DESC') }} {{ lang('STATS_PERMISSIONS_LANG_EXT_VER') }} &bull; {{ lang('STATS_PERMISSIONS_LANG_AUTHOR') }}
+	{{ STATS_PERMISSIONS_EXT_NAME }} ({{ STATS_PERMISSIONS_EXT_VER }}) &copy; LukeWCS<br>
+	{{ lang('STATS_PERMISSIONS_LANG_DESC') }} ({{ lang('STATS_PERMISSIONS_LANG_EXT_VER') }}) &bull; {{ lang('STATS_PERMISSIONS_LANG_AUTHOR') }}
 </p>
 
-{% INCLUDEJS 'acp_stats_permissions.js' %}
-{% INCLUDECSS 'acp_stats_permissions.css' %}
 {% INCLUDE 'overall_footer.html' %}
+
+{% INCLUDEJS '@lukewcs_statspermissions/acp_stats_permissions.js' %}
+{% INCLUDECSS '@lukewcs_statspermissions/acp_stats_permissions.css' %}
+{% INCLUDECSS '@lukewcs_statspermissions/acp_toggle.css' %}
+
+{% macro switch(name, checked = false) %}
+	<input type="checkbox" class="toggle" name="{{ name }}" value="1"{{ checked ? ' checked' }}>
+{% endmacro %}
