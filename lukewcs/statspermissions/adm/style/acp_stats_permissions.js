@@ -7,9 +7,9 @@
 *
 */
 
-statspermissionsACP = {};
+statspermACP = {};
 
-statspermissionsACP.constants = Object.freeze({
+statspermACP.constants = Object.freeze({
 	PermNothing		: 0,
 	PermStats		: 1,
 	PermUsers		: 2,
@@ -19,10 +19,10 @@ statspermissionsACP.constants = Object.freeze({
 	OpacityDisabled	: '0.35',
 });
 
-statspermissionsACP.setState = function () {
+statspermACP.setState = function () {
 	'use strict';
 
-	var c = statspermissionsACP.constants;
+	var c = statspermACP.constants;
 
 	$('#stats_permissions_opt_use_permissions').css('opacity', (
 			$('input[name="stats_permissions_admin_mode"]').prop('checked') == false
@@ -40,33 +40,33 @@ statspermissionsACP.setState = function () {
 	);
 };
 
-statspermissionsACP.setDefaults = function () {
+statspermACP.setDefaults = function () {
 	'use strict';
 
-	var c = statspermissionsACP.constants;
+	var c = statspermACP.constants;
 
 	$('input[name="stats_permissions_admin_mode"]'			).prop('checked'	, false);
 	$('input[name="stats_permissions_use_permissions"]'		).prop('checked'	, false);
 	$('select[name="stats_permissions_disp_for_guests"]'	).prop('value'		, c.PermStats);
 	$('select[name="stats_permissions_disp_for_bots"]'		).prop('value'		, c.PermNothing);
 
-	statspermissionsACP.setState();
+	statspermACP.setState();
 };
 
-statspermissionsACP.customFormReset = function () {
+statspermACP.customFormReset = function () {
 	'use strict';
 
 	$('#stats_permissions_form').trigger('reset');
-	statspermissionsACP.setState();
+	statspermACP.setState();
 };
 
 $(window).ready(function() {
 	'use strict';
 
-	statspermissionsACP.setState();
+	statspermACP.setState();
 
-	$('input[name="stats_permissions_admin_mode"]'		).on('change'	, statspermissionsACP.setState);
-	$('input[name="stats_permissions_use_permissions"]'	).on('change'	, statspermissionsACP.setState);
-	$('input[name="stats_permissions_defaults"]'		).on('click'	, statspermissionsACP.setDefaults);
-	$('input[name="form_reset"]'						).on('click'	, statspermissionsACP.customFormReset);
+	$('input[name="stats_permissions_admin_mode"]'		).on('change'	, statspermACP.setState);
+	$('input[name="stats_permissions_use_permissions"]'	).on('change'	, statspermACP.setState);
+	$('input[name="stats_permissions_defaults"]'		).on('click'	, statspermACP.setDefaults);
+	$('input[name="form_reset"]'						).on('click'	, statspermACP.customFormReset);
 });

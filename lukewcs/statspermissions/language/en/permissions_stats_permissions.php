@@ -37,6 +37,6 @@ if (empty($lang) || !is_array($lang))
 // ’ « » “ ” … „ “
 //
 $lang = array_merge($lang, [
-	'ACL_U_STATS_PERMISSIONS_SHOW_STATS'	=> 'Can view statistics',
-	'ACL_U_STATS_PERMISSIONS_SHOW_NEWEST'	=> 'Can view newest member',
+	'ACL_U_STATS_PERMISSIONS_SHOW_STATS'	=> 'Stats Permissions: Can view statistics',
+	'ACL_U_STATS_PERMISSIONS_SHOW_NEWEST'	=> 'Stats Permissions: Can view newest member',
 ]);

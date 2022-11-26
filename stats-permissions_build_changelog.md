@@ -1,5 +1,16 @@
 #### Builds 1.0.1
 
+#### 1.0.1-b2
+* ACP-Template:
+  * Twig optimiert, um im Output unnötige Whitespaces zu eliminieren.
+  * Bei einem `legend` wurde `class="legend_sub"` definiert, welches jedoch nur bei EMP benötigt wird. Copy&Paste Fehler. (Meldung Kirk)
+* Sprachdateien:
+  * Beschreibungen der Rechte erweitert, damit man auch in den Rechten sofort sieht, was zu StatsPerm gehört.
+* JS:
+  * ACP JS Objekt umbenannt.
+* CSS:
+  * Beim Toggle CSS einen kompakten Header eingefügt mit grundlegenden Infos und um Dan Klammer zu benennen, von dessen Webseite wir den CSS Code ursprünglich haben.
+
 #### 1.0.1-b1
 * ACP-Modul:
   * Optimierung der Metadata Funktion, übernommen von EMP.

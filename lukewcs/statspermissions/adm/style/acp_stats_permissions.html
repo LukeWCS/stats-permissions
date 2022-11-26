@@ -70,7 +70,7 @@
 	</fieldset>
 
 	<fieldset>
-		<legend class="legend_sub">{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
+		<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
 
 		<p class="submit-buttons">
 			<input class="button1" type="submit" name="submit" value="{{ lang('SUBMIT') }}">&nbsp;
@@ -93,5 +93,7 @@
 {% INCLUDECSS '@lukewcs_statspermissions/acp_toggle.css' %}
 
 {% macro switch(name, checked = false) %}
+{% spaceless %}
 	<input type="checkbox" class="toggle" name="{{ name }}" value="1"{{ checked ? ' checked' }}>
+{% endspaceless %}
 {% endmacro %}
