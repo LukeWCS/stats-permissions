@@ -1,14 +1,15 @@
 ### 1.0.1
-GH (2022--)
+GH (2022-12-01)
 
+* Rechte:
+  * Beschreibungen der Rechte erweitert, damit man auch in den Rechten sofort sieht, was zu StatsPerm gehört.
 * Einstellungen:
   * Bei den Einstellungen werden für Ja/Nein-Optionen jetzt Checkboxen mit Toggle-Style verwendet. Dabei wurden für Menschen mit Farbseh-Schwäche (Rot/Grün Problematik und Farbblindheit) zwei Merkmale berücksichtigt: 1) Beibehaltung der gewohnten Positionen für Ja und Nein. 2) Eindeutige Symbole für die Zustände Ja und Nein. Toggle Funktionalität in angepasster Form von "Style Changer" übernommen. (Danke an Kirk)
   * "Absenden" und "Zurücksetzen" sind jetzt in einer eigenen Untergruppe, die auf dieselbe Weise dargestellt wird, wie bei ACP Seiten von phpBB.
-  * Verbesserte Benachrichtigungen-Funktion von EMP übernommen.
-  * Die aktualisierten Funktionen des Sprachpaket-Infosystems von EMP übernommen.
+* Optimierung:
+  * Code Optimierung bei Javascript, Twig und HTML. Mehrere Eigenschaften und aktuelle Entwicklungen von "Extension Manager Plus" übernommen.
   * XHTML, Javascript Events und alle unnötigen IDs aus dem HTML entfernt.
-* Javascript/jQuery:
-  * Alle aktuellen Entwicklungen von EMP übernommen.
+  * Javascript Events werden jetzt direkt in jQuery registriert und Elemente werden nicht mehr über die ID sondern über den Element-Namen angesprochen, der ohnehin vorhanden sein muss.
 
 ### 1.0.0
 GH (2022-03-26)

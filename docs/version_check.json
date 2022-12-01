@@ -1,9 +1,8 @@
 {
     "stable": {
         "1.0": {
-            "current": "1.0.0",
-            "announcement": "https://github.com/LukeWCS/stats-permissions/releases/tag/1.0.0",
-            "download": "https://github.com/LukeWCS/stats-permissions/releases/download/1.0.0/lukewcs_statspermissions_1.0.0.zip",
+            "current": "1.0.1",
+            "announcement": "https://github.com/LukeWCS/stats-permissions/releases",
             "eol": null,
             "security": false
         }

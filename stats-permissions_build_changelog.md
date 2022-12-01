@@ -1,5 +1,8 @@
 #### Builds 1.0.1
 
+#### 1.0.1
+* Release
+
 #### 1.0.1-b2
 * ACP-Template:
   * Twig optimiert, um im Output unnötige Whitespaces zu eliminieren.
