@@ -5,7 +5,7 @@ Extension for phpBB - Allows to define independent permissions for viewing stati
 
 ### Requirements
 * phpBB 3.2.10 up to and including phpBB 3.3
-* PHP 7.0 up to and including PHP 8.0
+* PHP 7.0 up to and including PHP 8.1
 
 ### Installation / Update of Stats Permissions
 1. Download and extract the Zip archive of the [GitHub release](https://github.com/LukeWCS/stats-permissions/releases).
