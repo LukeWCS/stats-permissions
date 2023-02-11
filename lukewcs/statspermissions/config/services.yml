@@ -14,3 +14,12 @@ services:
             - '@user'
             - '@dispatcher'
             - '@language'
+    lukewcs.statspermissions.controller.acp:
+        class: lukewcs\statspermissions\controller\acp_stats_permissions_controller
+        arguments:
+            - '@language'
+            - '@template'
+            - '@request'
+            - '@config'
+            - '@user'
+            - '@ext.manager' 

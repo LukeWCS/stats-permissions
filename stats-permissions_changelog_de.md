@@ -1,3 +1,17 @@
+### 1.0.2
+GH (2023-02-)
+
+* Fix: Von LFWWH einen Fix im Rechtesystem übernommen, der sich auf eine Warnung im Foren-Frontend bezieht.
+* ACP-Template:
+  * Toggle Farben von Extension Manager Plus übernommen.
+  * Korrektur im CSS bezüglich vertikalem Abstand bei responsive Ansicht. (Meldung Kirk)
+  * Verschiedenes CSS von LFWWH übernommen.
+  * Twig: Das `spaceless` Tag, welches seit Twig 2.7 als DEPRECATED eingestuft ist, wurde entfernt. Stattdessen wird `spaceless` Filter und Whitespace Modifier eingesetzt.
+* ACP-Modul:
+  * Im Modul wurde noch in 2 Zeilen das alte 3.1 Sprachobjekt verwendet.
+  * Umgestellt auf Controller.
+* PHP Minimalversion auf 7.1 erhöht und Maximalversion auf 8.2.
+
 ### 1.0.1
 GH (2022-12-01)
 

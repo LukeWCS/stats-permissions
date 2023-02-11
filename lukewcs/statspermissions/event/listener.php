@@ -26,8 +26,8 @@ class listener implements EventSubscriberInterface
 	public static function getSubscribedEvents()
 	{
 		return [
-			'core.page_header_after'		=> 'set_template_vars',
-			'core.permissions'				=> 'add_permissions',
+			'core.page_header_after'	=> 'set_template_vars',
+			'core.permissions'			=> 'add_permissions',
 		];
 	}
 

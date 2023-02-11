@@ -1,4 +1,24 @@
-#### Builds 1.0.1
+### 1.0.2
+
+#### 1.0.2-b1
+* ACP-Modul:
+  * Im Modul wurde noch in 2 Zeilen das alte 3.1 Sprachobjekt verwendet.
+  * Umgestellt auf Controller.
+* ACP-Template:
+  * Umbenannt.
+  * Im CSS fehlte bei `@media` ein Abstand für `dd`, wie es bei LFWWH und EMP gemacht wurde. (Meldung Kirk)
+  * Verschiedenes CSS von LFWWH übernommen.
+  * Twig: `spaceless` Tag entfernt und durch `spaceless` Filter und Whitespace Modifier ersetzt.
+* Core:
+  * Funktionen ohne Rückgabewert als `void` deklariert.
+  * Von LFWWH einen Fix im Rechtesystem übernommen.
+* PHP Mindestversion auf 7.1 erhöht und Maximalversion auf 8.2 erhöht:
+  * `composer.json` angepasst.
+  * `ext.php` angepasst.
+* Migration:
+  * Kleinere Korrekturen.
+
+### 1.0.1
 
 #### 1.0.1
 * Release
@@ -40,7 +60,7 @@
   * PHP Maximalversion auf <8.2.0 erhöht.
   * Überflüssige (redundante) Angabe des phpBB Versionsbereichs entfernt.
 
-#### Builds 1.0.0
+### 1.0.0
 
 #### b10
 * GitHub: `.gitattributes` ergänzt.

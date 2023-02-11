@@ -40,7 +40,7 @@ class stats_permissions
 		$this->language = $language;
 	}
 
-	public function set_template_vars()
+	public function set_template_vars(): void
 	{
 		$force_api_mode = false;
 
@@ -76,7 +76,7 @@ class stats_permissions
 					$permission_stats = true;
 					$permission_newest = true;
 				}
-				else if ($this->user->data['is_bot'])	// bot
+				else if (!empty($this->user->data['is_bot']))	// bot
 				{
 					$permission_stats = (
 						$this->config['stats_permissions_disp_for_bots'] == self::PERM_STATS
@@ -110,7 +110,7 @@ class stats_permissions
 		]);
 	}
 
-	public function add_permissions($event)
+	public function add_permissions($event): void
 	{
 		$permissions = $event['permissions'];
 		$lang_show_stats = $this->language->lang('ACL_U_STATS_PERMISSIONS_SHOW_STATS');

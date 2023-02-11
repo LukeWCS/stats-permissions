@@ -12,9 +12,14 @@ namespace lukewcs\statspermissions\migrations;
 
 class v_1_0_0 extends \phpbb\db\migration\migration
 {
+	public function effectively_installed()
+	{
+		return isset($this->config['stats_permissions_admin_mode']);
+	}
+
 	public static function depends_on()
 	{
-		return ['\phpbb\db\migration\data\v32x\v3210'];
+		return ['\phpbb\db\migration\data\v32x\v329'];
 	}
 
 	public function update_data()

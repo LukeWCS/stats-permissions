@@ -1,5 +1,5 @@
 {#
-* 
+*
 * Stats Permissions. An extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
@@ -24,18 +24,21 @@
 <form id="stats_permissions_form" method="post" action="{{ U_ACTION }}">
 	<fieldset>
 		<legend>{{ lang('STATS_PERMISSIONS_SECTION_PERMISSIONS') }}</legend>
+
 		<dl id="stats_permissions_opt_admin_mode">
 			<dt><label>{{ lang('STATS_PERMISSIONS_ADMIN_MODE') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_ADMIN_MODE_EXP') }}</span></dt>
 			<dd>
 				{{ _self.switch('stats_permissions_admin_mode', STATS_PERMISSIONS_ADMIN_MODE) }}
 			</dd>
 		</dl>
+
 		<dl id="stats_permissions_opt_use_permissions">
 			<dt><label>{{ lang('STATS_PERMISSIONS_USE_PERMISSIONS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_USE_PERMISSIONS_EXP') }}</span></dt>
 			<dd>
 				{{ _self.switch('stats_permissions_use_permissions', STATS_PERMISSIONS_USE_PERMISSIONS) }}
 			</dd>
 		</dl>
+
 		<dl id="stats_permissions_opt_disp_for_guests">
 			<dt><label>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS_EXP') }}</span></dt>
 			<dd>
@@ -47,6 +50,7 @@
 				</select>
 			</dd>
 		</dl>
+
 		<dl id="stats_permissions_opt_disp_for_bots">
 			<dt><label>{{ lang('STATS_PERMISSIONS_DISP_FOR_BOTS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_DISP_FOR_BOTS_EXP') }}</span></dt>
 			<dd>
@@ -92,8 +96,6 @@
 {% INCLUDECSS '@lukewcs_statspermissions/acp_stats_permissions.css' %}
 {% INCLUDECSS '@lukewcs_statspermissions/acp_toggle.css' %}
 
-{% macro switch(name, checked = false) %}
-{% spaceless %}
+{% macro switch(name, checked = false) -%}
 	<input type="checkbox" class="toggle" name="{{ name }}" value="1"{{ checked ? ' checked' }}>
-{% endspaceless %}
-{% endmacro %}
+{%- endmacro %}

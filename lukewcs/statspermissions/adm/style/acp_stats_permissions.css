@@ -1,3 +1,9 @@
+input[type=button][name*="stats_permissions_"],
+.submit-buttons input[type=submit],
+.submit-buttons input[type=button] {
+	padding: 3px 4px;
+}
+
 .stats_permissions_copyright {
 	margin-top: 1em;
 	text-align: center;
@@ -18,5 +24,9 @@ legend {
 	legend {
 		margin-left: -6px;
 		padding: 2px 5px;
+	}
+
+	#stats_permissions_form dd {
+		margin-top: .5em;
 	}
 }

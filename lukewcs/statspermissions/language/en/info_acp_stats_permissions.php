@@ -38,6 +38,6 @@ if (empty($lang) || !is_array($lang))
 //
 $lang = array_merge($lang, [
 	// navigation
-	'STATS_PERMISSIONS_NAV_TITLE'			=> 'Stats Permissions',
-	'STATS_PERMISSIONS_NAV_CONFIG'			=> 'Settings',
+	'STATS_PERMISSIONS_NAV_TITLE'	=> 'Stats Permissions',
+	'STATS_PERMISSIONS_NAV_CONFIG'	=> 'Settings',
 ]);
