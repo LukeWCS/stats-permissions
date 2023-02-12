@@ -1,7 +1,7 @@
 ### 1.0.2
-GH (2023-02-)
+GH (2023-02-12)
 
-* Fix: Von LFWWH einen Fix im Rechtesystem übernommen, der sich auf eine Warnung im Foren-Frontend bezieht.
+* Fix: Von LFWWH einen Fix im Rechtesystem bezüglich Bots übernommen, der sich auf eine Warnung im Foren-Frontend bezieht.
 * ACP-Template:
   * Toggle Farben von Extension Manager Plus übernommen.
   * Korrektur im CSS bezüglich vertikalem Abstand bei responsive Ansicht. (Meldung Kirk)

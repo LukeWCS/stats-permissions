@@ -1,5 +1,8 @@
 ### 1.0.2
 
+#### 1.0.2
+* Release
+
 #### 1.0.2-b2
 * ACP-Modul:
   * Altes Modul mit manuellem Modus entfernt und neu im automatischen Modus hinzugefügt.
