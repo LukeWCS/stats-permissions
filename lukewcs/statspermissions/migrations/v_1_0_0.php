@@ -75,13 +75,13 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 		]];
 		$data[] = ['module.add', [
 			'acp',
-			'STATS_PERMISSIONS_NAV_TITLE',
-			[
+			'STATS_PERMISSIONS_NAV_TITLE', [
 				'module_basename'	=> '\lukewcs\statspermissions\acp\acp_stats_permissions_module',
 				'module_langname'	=> 'STATS_PERMISSIONS_NAV_CONFIG',
 				'module_mode'		=> 'overview',
 				'module_auth'		=> 'ext_lukewcs/statspermissions && acl_a_board',
-		]]];
+			]
+		]];
 
 		return $data;
 	}

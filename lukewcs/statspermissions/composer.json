@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Allows to define independent permissions for viewing statistics and newest member.",
 	"homepage": "https://github.com/LukeWCS/stats-permissions",
-	"version": "1.0.2-b1",
-	"time": "2023-02-10",
+	"version": "1.0.2-b2",
+	"time": "2023-02-12",
 	"license": "GPL-2.0-only",
 	"authors": [
 		{

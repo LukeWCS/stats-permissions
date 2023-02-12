@@ -1,5 +1,12 @@
 ### 1.0.2
 
+#### 1.0.2-b2
+* ACP-Modul:
+  * Altes Modul mit manuellem Modus entfernt und neu im automatischen Modus hinzugefügt.
+* ACP-Template:
+  * Formaler Fehler behoben.
+* Neue Migration.
+
 #### 1.0.2-b1
 * ACP-Modul:
   * Im Modul wurde noch in 2 Zeilen das alte 3.1 Sprachobjekt verwendet.
@@ -9,6 +16,7 @@
   * Im CSS fehlte bei `@media` ein Abstand für `dd`, wie es bei LFWWH und EMP gemacht wurde. (Meldung Kirk)
   * Verschiedenes CSS von LFWWH übernommen.
   * Twig: `spaceless` Tag entfernt und durch `spaceless` Filter und Whitespace Modifier ersetzt.
+  * Toggle Farben von EMP übernommen.
 * Core:
   * Funktionen ohne Rückgabewert als `void` deklariert.
   * Von LFWWH einen Fix im Rechtesystem übernommen.
