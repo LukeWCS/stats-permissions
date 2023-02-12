@@ -5,4 +5,4 @@ Extension for phpBB - Allows to define independent permissions for viewing stati
 
 ### Requirements
 * phpBB 3.2.10 up to and including phpBB 3.3
-* PHP 7.0 up to and including PHP 8.1
+* PHP 7.1 up to and including PHP 8.2
