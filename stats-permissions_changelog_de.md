@@ -1,5 +1,12 @@
+### 1.1.0
+(2023-12-)
+
+* Freigegeben für PHP 8.3.
+* Erweiterung ist jetzt kompatibel mit Toggle Control. Somit können Administratoren zentral an einer Stelle entscheiden, ob für Ja/Nein Schalter Radio Buttons, Checkboxen oder Toggles verwendet werden sollen.
+* Technik auf den Stand von EMP 2.0 gebracht.
+
 ### 1.0.2
-GH (2023-02-12)
+(2023-02-12)
 
 * Fix: Von LFWWH einen Fix im Rechtesystem bezüglich Bots übernommen, der sich auf eine Warnung im Foren-Frontend bezieht.
 * ACP-Template:
@@ -13,7 +20,7 @@ GH (2023-02-12)
 * PHP Minimalversion auf 7.1 erhöht und Maximalversion auf 8.2.
 
 ### 1.0.1
-GH (2022-12-01)
+(2022-12-01)
 
 * Rechte:
   * Beschreibungen der Rechte erweitert, damit man auch in den Rechten sofort sieht, was zu StatsPerm gehört.
@@ -26,7 +33,7 @@ GH (2022-12-01)
   * Javascript Events werden jetzt direkt in jQuery registriert und Elemente werden nicht mehr über die ID sondern über den Element-Namen angesprochen, der ohnehin vorhanden sein muss.
 
 ### 1.0.0
-GH (2022-03-26)
+(2022-03-26)
 
 * Den API-Modus von LFWWH übernommen, damit andere Entwickler die Anzeige des Templates deaktivieren können. Dieser Modus kann momentan nur per PHP Event getriggert werden, die ACP Einstellung dafür kommt später.
 * Das PHP Event `lukewcs.statspermissions.display_condition` eingebaut, mit dem bestimmte Variablen übersteuert werden können um das Verhalten von StatsPerm zu ändern. Hilfreich für Bridge-Entwickler. Die folgenden Event-Variablen werden erstmalig unterstützt: 
@@ -37,7 +44,7 @@ GH (2022-03-26)
   * Die von phpBB nicht genutzte CSS Klasse `statistics` in `statsperm-statistics` umbenannt. (Vorschlag von: Kirk) 
 
 ### 1.0.0-rc1
-GH (2022-02-28)
+(2022-02-28)
 
 * Erste öffentliche Version.
 * Komplette Überarbeitung und Anpassung an die aktuellen Richtlinien.

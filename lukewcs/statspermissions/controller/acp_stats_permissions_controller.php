@@ -16,8 +16,9 @@ class acp_stats_permissions_controller
 	protected $template;
 	protected $request;
 	protected $config;
-	protected $user;
 	protected $ext_manager;
+	protected $metadata;
+
 	public $u_action;
 
 	public function __construct(
@@ -25,7 +26,6 @@ class acp_stats_permissions_controller
 		\phpbb\template\template $template,
 		\phpbb\request\request $request,
 		\phpbb\config\config $config,
-		\phpbb\user $user,
 		\phpbb\extension\manager $ext_manager
 	)
 	{
@@ -33,13 +33,17 @@ class acp_stats_permissions_controller
 		$this->template		= $template;
 		$this->request		= $request;
 		$this->config		= $config;
-		$this->user			= $user;
 		$this->ext_manager	= $ext_manager;
+
+		$this->metadata		= $this->ext_manager->create_extension_metadata_manager('lukewcs/statspermissions')->get_metadata('all');
 	}
 
-	public function module_settings()
+	public function module_settings(): void
 	{
-		$this->language->add_lang(['acp_stats_permissions'], 'lukewcs/statspermissions');
+		$notes = [];
+
+		$this->language->add_lang(['acp_stats_permissions', 'acp_stats_permissions_lang_author'], 'lukewcs/statspermissions');
+		$this->set_meta_template_vars('STATS_PERMISSIONS');
 
 		if ($this->request->is_set_post('submit'))
 		{
@@ -56,18 +60,7 @@ class acp_stats_permissions_controller
 			trigger_error($this->language->lang('STATS_PERMISSIONS_MSG_SAVED_SETTINGS') . adm_back_link($this->u_action));
 		}
 
-		add_form_key('stats_permissions');
-
-		$md_manager = $this->ext_manager->create_extension_metadata_manager('lukewcs/statspermissions');
-		$this_meta = $md_manager->get_metadata('all');
-		$notes = [];
-
-		$ext_display_name	= $this_meta['extra']['display-name'];
-		$ext_ver			= $this_meta['version'];
-		$ext_lang_min_ver	= $this_meta['extra']['lang-min-ver'];
-
-		$ext_lang_ver 		= $this->get_lang_ver('STATS_PERMISSIONS_LANG_EXT_VER');
-		$lang_outdated_msg	= $this->check_lang_ver($ext_display_name, $ext_lang_ver, $ext_lang_min_ver, 'STATS_PERMISSIONS_MSG_LANGUAGEPACK_OUTDATED');
+		$lang_outdated_msg	= $this->lang_ver_check_msg('STATS_PERMISSIONS_LANG_VER', 'STATS_PERMISSIONS_MSG_LANGUAGEPACK_OUTDATED');
 		if ($lang_outdated_msg)
 		{
 			$notes[] = $lang_outdated_msg;
@@ -75,17 +68,23 @@ class acp_stats_permissions_controller
 
 		$this->template->assign_vars([
 			// heading
-			'STATS_PERMISSIONS_EXT_NAME'				=> $ext_display_name,
-			'STATS_PERMISSIONS_EXT_VER'					=> $ext_ver,
 			'STATS_PERMISSIONS_NOTES'					=> $notes,
 			// config section 1
 			'STATS_PERMISSIONS_ADMIN_MODE'				=> $this->config['stats_permissions_admin_mode'],
 			'STATS_PERMISSIONS_USE_PERMISSIONS'			=> $this->config['stats_permissions_use_permissions'],
 			'STATS_PERMISSIONS_DISP_FOR_GUESTS'			=> $this->config['stats_permissions_disp_for_guests'],
 			'STATS_PERMISSIONS_DISP_FOR_BOTS'			=> $this->config['stats_permissions_disp_for_bots'],
+			'STATS_PERMISSIONS_OPTIONS' => [
+				'STATS_PERMISSIONS_PERM_STATS_NEWEST'	=> '3',
+				'STATS_PERMISSIONS_PERM_NEWEST'			=> '2',
+				'STATS_PERMISSIONS_PERM_STATS'			=> '1',
+				'STATS_PERMISSIONS_PERM_NOTHING'		=> '0',
+			],
 			// form elements
 			'U_ACTION'									=> $this->u_action,
 		]);
+
+		add_form_key('stats_permissions');
 	}
 
 	public function set_page_url(string $u_action): void
@@ -118,5 +117,42 @@ class acp_stats_permissions_controller
 		}
 
 		return $lang_outdated_msg;
+	}
+
+	// Check the language pack version for the minimum version and generate notice if outdated
+	private function lang_ver_check_msg(string $lang_version_var, string $lang_outdated_var): string
+	{
+		$lang_outdated_msg = '';
+		$ext_lang_ver = $this->get_lang_ver($lang_version_var);
+		$ext_lang_min_ver = $this->metadata['extra']['lang-min-ver'];
+
+		if (phpbb_version_compare($ext_lang_ver, $ext_lang_min_ver, '<'))
+		{
+			if ($this->language->is_set($lang_outdated_var))
+			{
+				$lang_outdated_msg = $this->language->lang($lang_outdated_var);
+			}
+			else // Fallback if the current language package does not yet have the required variable.
+			{
+				$lang_outdated_msg = 'Note: The language pack for the extension <strong>%1$s</strong> is no longer up-to-date. (installed: %2$s / needed: %3$s)';
+			}
+			$lang_outdated_msg = sprintf($lang_outdated_msg, $this->metadata['extra']['display-name'], $ext_lang_ver, $ext_lang_min_ver);
+		}
+
+		return $lang_outdated_msg;
+	}
+
+	private function set_meta_template_vars(string $tpl_prefix): void
+	{
+		$this->template->assign_vars([
+			$tpl_prefix . '_METADATA'	=> [
+				'EXT_NAME'		=> $this->metadata['extra']['display-name'],
+				'EXT_VER'		=> $this->language->lang($tpl_prefix . '_VERSION_STRING', $this->metadata['version']),
+				'LANG_DESC'		=> $this->language->lang($tpl_prefix . '_LANG_DESC'),
+				'LANG_VER'		=> $this->language->lang($tpl_prefix . '_VERSION_STRING', $this->language->lang($tpl_prefix . '_LANG_VER')),
+				'LANG_AUTHOR'	=> $this->language->lang($tpl_prefix . '_LANG_AUTHOR'),
+				'CLASS'			=> strtolower($tpl_prefix) . '_footer',
+			],
+		]);
 	}
 }

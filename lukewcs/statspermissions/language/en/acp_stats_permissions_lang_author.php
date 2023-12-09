@@ -1,9 +1,9 @@
 <?php
 /**
 *
-* Stats Permissions. An extension for the phpBB Forum Software package.
+* Toggle Control. An extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
+* @copyright (c) 2023, LukeWCS, https://www.wcsaga.org/
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -35,10 +35,13 @@ if (empty($lang) || !is_array($lang))
 //
 // Some characters you may want to copy&paste:
 // ’ « » “ ” … „ “
-//
+
 $lang = array_merge($lang, [
-	// navigation
-	'STATS_PERMISSIONS_NAV_TITLE'		=> 'Stats Permissions',
-	'STATS_PERMISSIONS_NAV_CONFIG'		=> 'Settings',
-	'STATS_PERMISSIONS_VERSION_STRING'	=> 'v%s',
+	// language pack author
+	'STATS_PERMISSIONS_LANG_DESC'					=> 'English',
+	'STATS_PERMISSIONS_LANG_VER' 					=> '1.1.0',
+	'STATS_PERMISSIONS_LANG_AUTHOR' 				=> 'LukeWCS',
+
+	// messages
+	'STATS_PERMISSIONS_MSG_LANGUAGEPACK_OUTDATED'	=> 'Note: The language pack for the extension <strong>%1$s</strong> is no longer up-to-date. (installed: %2$s / needed: %3$s)',
 ]);

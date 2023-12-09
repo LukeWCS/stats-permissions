@@ -1,7 +1,31 @@
-### 1.0.2
+#### 1.1.0-b1
+* Freigegeben für PHP 8.3.
+* Erweiterung ist jetzt kompatibel mit Toggle Control. Somit können Administratoren zentral an einer Stelle entscheiden, ob für Ja/Nein Schalter Radio Buttons, Checkboxen oder Toggles verwendet werden sollen.
+* ACP-Template:
+  * Bei allen Optionsgruppen die ID entfernt, die für die Abblenden-Funktion benötigt wurde.
+  * Das `switch()` Makro wurde erweitert, um auch Checkboxen und Radio Buttons generieren zu können. Notwendig für die TC Kompatibilität.
+  * Footer durch `footer()` Makro ersetzt.
+  * Benachrichtigungen durch `notes()` Makro ersetzt.
+  * PullDown Menüs durch `select()` Makro ersetzt.
+  * JS Button durch `js_button()` Makro ersetzt.
+* ACP-Controller:
+  * Meine Metadata Funktion eingebaut für das Footer Makro.
+  * Auf das Sprachpaket-Info-Modul von EMP umgestellt.
+* CSS:
+  * Das Toggle-CSS in das ACP-CSS integriert und die separate Datei entfernt.
+  * Bei Toggles wird jetzt eine Bewegungs-Animation beim Slider verwendet, sowie eine Farb-Animation (Übergang) bei der Hintergrundfarbe. [Vorschlag von Kirk (phpBB.de)]
+  * Pointer Cursor bei `dt label` deaktiviert.
+* JS:
+  * Da Schalter jetzt auch als Radio Buttons dargestellt werden können, musste die Funktion zum Zurücksetzen auf Installationsstandard angepasst werden.
+  * Der Formular-Reset ist nicht mehr an einen Button gebunden, sondern wird per Reset-Event überwacht und so `setState` automatisch ausgeführt.
+  * Funktion hinzugefügt, mit der eine Optionsgruppe anhand des Element-Namens abgeblendet werden kann. Somit keine ID im Template mehr notwendig.
+  * Globales Objekt entfernt und auf IIFE umgestellt.
+* Sprachdateien:
+  * An das Footer Makro angepasst.
+  * Sprachdatei für das Sprachpaket-Info-Modul hinzugefügt.
 
 #### 1.0.2
-* Release
+* Release (2023-02-12)
 
 #### 1.0.2-b2
 * ACP-Modul:
@@ -30,9 +54,7 @@
   * Kleinere Korrekturen.
 
 ### 1.0.1
-
-#### 1.0.1
-* Release
+* Release (2022-12-01)
 
 #### 1.0.1-b2
 * ACP-Template:
@@ -72,6 +94,7 @@
   * Überflüssige (redundante) Angabe des phpBB Versionsbereichs entfernt.
 
 ### 1.0.0
+* Release (2022-03-26)
 
 #### b10
 * GitHub: `.gitattributes` ergänzt.

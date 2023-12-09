@@ -21,5 +21,4 @@ services:
             - '@template'
             - '@request'
             - '@config'
-            - '@user'
             - '@ext.manager' 
