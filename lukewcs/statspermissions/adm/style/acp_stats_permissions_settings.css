@@ -8,7 +8,7 @@
 
 /* SETTINGS */
 
-input[type=button][name*="stats_permissions_"],
+[type=button][name*="stats_permissions_"],
 .submit-buttons input[type=submit],
 .submit-buttons input[type=button] {
 	padding: 3px 4px;

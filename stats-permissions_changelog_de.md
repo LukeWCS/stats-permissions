@@ -1,9 +1,9 @@
 ### 1.1.0
-(2023-12-)
+(2023-12-09)
 
 * Freigegeben für PHP 8.3.
 * Erweiterung ist jetzt kompatibel mit Toggle Control. Somit können Administratoren zentral an einer Stelle entscheiden, ob für Ja/Nein Schalter Radio Buttons, Checkboxen oder Toggles verwendet werden sollen.
-* Technik auf den Stand von EMP 2.0 gebracht.
+* Technik auf den Stand von EMP 2.0 gebracht, Details im Build Changelog.
 
 ### 1.0.2
 (2023-02-12)

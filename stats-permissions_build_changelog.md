@@ -1,3 +1,7 @@
+### 1.1.0
+* Release (2023-12-09)
+* Veraltete Funktion entfernt.
+
 #### 1.1.0-b1
 * Freigegeben für PHP 8.3.
 * Erweiterung ist jetzt kompatibel mit Toggle Control. Somit können Administratoren zentral an einer Stelle entscheiden, ob für Ja/Nein Schalter Radio Buttons, Checkboxen oder Toggles verwendet werden sollen.

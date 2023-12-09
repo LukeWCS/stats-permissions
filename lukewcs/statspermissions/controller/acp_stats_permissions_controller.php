@@ -99,27 +99,6 @@ class acp_stats_permissions_controller
 	}
 
 	// Check the language pack version for the minimum version and generate notice if outdated
-	private function check_lang_ver(string $ext_name, string $ext_lang_ver, string $ext_lang_min_ver, string $lang_outdated_var): string
-	{
-		$lang_outdated_msg = '';
-
-		if (phpbb_version_compare($ext_lang_ver, $ext_lang_min_ver, '<'))
-		{
-			if ($this->language->is_set($lang_outdated_var))
-			{
-				$lang_outdated_msg = $this->language->lang($lang_outdated_var);
-			}
-			else // Fallback if the current language package does not yet have the required variable.
-			{
-				$lang_outdated_msg = 'Note: The language pack for the extension <strong>%1$s</strong> is no longer up-to-date. (installed: %2$s / needed: %3$s)';
-			}
-			$lang_outdated_msg = sprintf($lang_outdated_msg, $ext_name, $ext_lang_ver, $ext_lang_min_ver);
-		}
-
-		return $lang_outdated_msg;
-	}
-
-	// Check the language pack version for the minimum version and generate notice if outdated
 	private function lang_ver_check_msg(string $lang_version_var, string $lang_outdated_var): string
 	{
 		$lang_outdated_msg = '';
