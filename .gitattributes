@@ -6,4 +6,5 @@ docs/ export-ignore
 .gitattributes export-ignore
 stats-permissions_build_changelog.md export-ignore
 stats-permissions_changelog_de.md export-ignore
-stats-permissions_version.json export-ignore
+LICENSE export-ignore
+README.md export-ignore
