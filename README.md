@@ -4,5 +4,5 @@ Extension for phpBB - Allows to define independent permissions for viewing stati
 [![Build Status](https://github.com/LukeWCS/stats-permissions/workflows/Tests/badge.svg)](https://github.com/LukeWCS/stats-permissions/actions)
 
 ### Requirements
-* phpBB 3.2.10 up to and including phpBB 3.3
-* PHP 7.1 up to and including PHP 8.2
+* phpBB 3.2.11 - 3.3.x
+* PHP 7.1 - 8.3
