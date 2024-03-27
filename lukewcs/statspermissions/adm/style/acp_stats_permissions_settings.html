@@ -36,17 +36,29 @@
 			</dd>
 		</dl>
 
-		<dl>
-			<dt><label>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_DISP_FOR_GUESTS_EXP') }}</span></dt>
+		<legend class="legend_sub simple_permissions">{{ lang('STATS_PERMISSIONS_SECTION_SIMPLE_PERMISSIONS') }}</legend>
+		<dl class="simple_permissions">
+			<dt>
+				<span>{{ lang('STATS_PERMISSIONS_SIMPLE_PERMISSIONS_EXP') }}</span>
+			</dt>
+		</dl>
+
+		<dl class="simple_permissions">
+			<dt><label>{{ lang('STATS_PERMISSIONS_PERM_FOR_GUESTS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_PERM_FOR_GUESTS_EXP') }}</span></dt>
 			<dd>
-				{{ _self.select('stats_permissions_disp_for_guests', STATS_PERMISSIONS_DISP_FOR_GUESTS, STATS_PERMISSIONS_OPTIONS) }}
+				<!-- {{ _self.select('stats_permissions_disp_for_guests', STATS_PERMISSIONS_DISP_FOR_GUESTS, STATS_PERMISSIONS_OPTIONS) }}<br> -->
+				{{ _self.switch('stats_permissions_perm_for_guests_stats'	, STATS_PERMISSIONS_PERM_FOR_GUESTS b-and 1, switch_type) }} {{ lang('STATS_PERMISSIONS_PERM_STATS') }}<br>
+				{{ _self.switch('stats_permissions_perm_for_guests_newest'	, STATS_PERMISSIONS_PERM_FOR_GUESTS b-and 2, switch_type) }} {{ lang('STATS_PERMISSIONS_PERM_NEWEST') }}<br>
 			</dd>
 		</dl>
 
-		<dl>
-			<dt><label>{{ lang('STATS_PERMISSIONS_DISP_FOR_BOTS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_DISP_FOR_BOTS_EXP') }}</span></dt>
+		<dl class="simple_permissions">
+			<dt><label>{{ lang('STATS_PERMISSIONS_PERM_FOR_BOTS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_PERM_FOR_BOTS_EXP') }}</span></dt>
 			<dd>
-				{{ _self.select('stats_permissions_disp_for_bots', STATS_PERMISSIONS_DISP_FOR_BOTS, STATS_PERMISSIONS_OPTIONS) }}
+				<!-- {{ _self.select('stats_permissions_disp_for_bots', STATS_PERMISSIONS_DISP_FOR_BOTS, STATS_PERMISSIONS_OPTIONS) }}<br> -->
+				{{ _self.switch('stats_permissions_perm_for_bots_stats'		, STATS_PERMISSIONS_PERM_FOR_BOTS b-and 1, switch_type) }} {{ lang('STATS_PERMISSIONS_PERM_STATS') }}<br>
+				{{ _self.switch('stats_permissions_perm_for_bots_newest'	, STATS_PERMISSIONS_PERM_FOR_BOTS b-and 2, switch_type) }} {{ lang('STATS_PERMISSIONS_PERM_NEWEST') }}<br>
+
 			</dd>
 		</dl>
 	</fieldset>

@@ -78,25 +78,29 @@ class stats_permissions
 				}
 				else if (!empty($this->user->data['is_bot']))	// bot
 				{
-					$permission_stats = (
-						$this->config['stats_permissions_disp_for_bots'] == self::PERM_STATS
-						|| $this->config['stats_permissions_disp_for_bots'] == self::PERM_STATS_NEWEST
-					);
-					$permission_newest = (
-						$this->config['stats_permissions_disp_for_bots'] == self::PERM_NEWEST
-						|| $this->config['stats_permissions_disp_for_bots'] == self::PERM_STATS_NEWEST
-					);
+					// $permission_stats = (
+						// $this->config['stats_permissions_disp_for_bots'] == self::PERM_STATS
+						// || $this->config['stats_permissions_disp_for_bots'] == self::PERM_STATS_NEWEST
+					// );
+					// $permission_newest = (
+						// $this->config['stats_permissions_disp_for_bots'] == self::PERM_NEWEST
+						// || $this->config['stats_permissions_disp_for_bots'] == self::PERM_STATS_NEWEST
+					// );
+					$permission_stats	= $this->config['stats_permissions_perm_for_bots'] & self::PERM_STATS;
+					$permission_newest	= $this->config['stats_permissions_perm_for_bots'] & self::PERM_NEWEST;
 				}
 				else	// guest
 				{
-					$permission_stats = (
-						$this->config['stats_permissions_disp_for_guests'] == self::PERM_STATS
-						|| $this->config['stats_permissions_disp_for_guests'] == self::PERM_STATS_NEWEST
-					);
-					$permission_newest = (
-						$this->config['stats_permissions_disp_for_guests'] == self::PERM_NEWEST
-						|| $this->config['stats_permissions_disp_for_guests'] == self::PERM_STATS_NEWEST
-					);
+					// $permission_stats = (
+						// $this->config['stats_permissions_disp_for_guests'] == self::PERM_STATS
+						// || $this->config['stats_permissions_disp_for_guests'] == self::PERM_STATS_NEWEST
+					// );
+					// $permission_newest = (
+						// $this->config['stats_permissions_disp_for_guests'] == self::PERM_NEWEST
+						// || $this->config['stats_permissions_disp_for_guests'] == self::PERM_STATS_NEWEST
+					// );
+					$permission_stats	= $this->config['stats_permissions_perm_for_guests'] & self::PERM_STATS;
+					$permission_newest	= $this->config['stats_permissions_perm_for_guests'] & self::PERM_NEWEST;
 				}
 			}
 		}

@@ -1,9 +1,36 @@
+#### 1.2.0-b1
+* phpBB Voraussetzung: 
+  * Min. 3.2.11 -> 3.3.0.
+* PHP Voraussetzung: 
+  * Min. 7.1.0 -> 7.1.3.
+* Core:
+  * Code an die Änderungen des einfachen Rechtesystems angepasst.
+* ACP-Template:
+  * Das einfache Rechtesystem in einen eigenen Abschnitt gesetzt und eine kleine Erklärung hinzugefügt.
+  * Dropdown-Menüs auf Schalter umgestellt.
+* ACP-Controller:
+  * Code für die bisherigen PullDown-Menüs deaktiviert.
+  * Neuen Code für die neuen Schalter eingefügt.
+* JS:
+  * An die Template Änderungen angepasst.
+  * Default Funktion an die 4 neuen Schalter angepasst.
+  * Optimierung.
+* CSS:
+  * `legend.legend_sub` von EMP übernommen.
+* Sprachdateien:
+  * 4 Variablen umbenannt.
+  * 2 Variablen hinzugefügt.
+  * Mehrere Text-Änderungen.
+* Neue Migration:
+  * 2 Config Variablen umbenannt.
+  
 ### 1.1.0
 * Release (2023-12-09)
 * Veraltete Funktion entfernt.
 
 #### 1.1.0-b1
-* Freigegeben für PHP 8.3.
+* PHP Voraussetzung: 
+  * Max. 8.2.0 -> 8.3.0.
 * Erweiterung ist jetzt kompatibel mit Toggle Control. Somit können Administratoren zentral an einer Stelle entscheiden, ob für Ja/Nein Schalter Radio Buttons, Checkboxen oder Toggles verwendet werden sollen.
 * ACP-Template:
   * Bei allen Optionsgruppen die ID entfernt, die für die Abblenden-Funktion benötigt wurde.
@@ -51,7 +78,7 @@
 * Core:
   * Funktionen ohne Rückgabewert als `void` deklariert.
   * Von LFWWH einen Fix im Rechtesystem übernommen.
-* PHP Mindestversion auf 7.1 erhöht und Maximalversion auf 8.2 erhöht:
+* PHP Mindestversion auf 7.1.0 erhöht und Maximalversion auf 8.2.x erhöht:
   * `composer.json` angepasst.
   * `ext.php` angepasst.
 * Migration:

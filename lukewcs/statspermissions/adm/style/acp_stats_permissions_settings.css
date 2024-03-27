@@ -24,6 +24,21 @@ legend {
 	background-color: inherit;
 }
 
+legend.legend_sub {
+	border: 0;
+	margin: 1em 0;
+	padding: 0;
+	display: flex;
+	white-space: nowrap;
+}
+
+legend.legend_sub:after {
+	content: "";
+	border-bottom: 1px solid #cccccc;
+	width: 100%;
+	margin: 0 0 0.5em 1em;
+}
+
 fieldset dt label {
 	cursor: inherit;
 }

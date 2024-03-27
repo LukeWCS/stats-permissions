@@ -1,3 +1,11 @@
+### 1.2.0
+(2024--)
+
+* Die Unterstützung für phpBB 3.2 wurde aufgegeben, Minimum ist jetzt phpBB 3.3.0.
+* Rechtesystem: Von LFWWH 2.2.0 die Änderungen am vereinfachten Berechtigungssystem übernommen.
+  * Das vereinfachte Berechtigungssystem in einen eigenen Abschnitt gesetzt und eine kleine Erklärung hinzugefügt.
+  * Statt einem Dropdown-Menü mit 4 Optionen, dienen jetzt 2 separate Schalter pro Gruppe für die Wahl der Berechtigungen.
+
 ### 1.1.0
 (2023-12-09)
 
@@ -17,7 +25,7 @@
 * ACP-Modul:
   * Im Modul wurde noch in 2 Zeilen das alte 3.1 Sprachobjekt verwendet.
   * Umgestellt auf Controller.
-* PHP Minimalversion auf 7.1 erhöht und Maximalversion auf 8.2.
+* PHP Minimalversion auf 7.1.0 erhöht und Maximalversion auf 8.2.x.
 
 ### 1.0.1
 (2022-12-01)
