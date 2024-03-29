@@ -2,23 +2,19 @@ services:
     lukewcs.statspermissions.listener:
         class: lukewcs\statspermissions\event\listener
         arguments:
-            - '@lukewcs.statspermissions.core'
-        tags:
-            - { name: event.listener }
-    lukewcs.statspermissions.core:
-        class: lukewcs\statspermissions\core\stats_permissions
-        arguments:
             - '@config'
             - '@template'
+            - '@language'
             - '@auth'
             - '@user'
             - '@dispatcher'
-            - '@language'
+        tags:
+            - { name: event.listener }
     lukewcs.statspermissions.controller.acp:
         class: lukewcs\statspermissions\controller\acp_stats_permissions_controller
         arguments:
-            - '@language'
-            - '@template'
-            - '@request'
             - '@config'
+            - '@template'
+            - '@language'
+            - '@request'
             - '@ext.manager' 

@@ -6,6 +6,9 @@
 * @copyright (c) 2023, LukeWCS, https://www.wcsaga.org/
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
+* Note: This extension is 100% genuine handcraft and consists of selected
+*       natural raw materials. There was no AI involved in making it.
+*
 */
 
 /**
@@ -39,7 +42,7 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, [
 	// language pack author
 	'STATS_PERMISSIONS_LANG_DESC'					=> 'English',
-	'STATS_PERMISSIONS_LANG_VER' 					=> '1.1.0',
+	'STATS_PERMISSIONS_LANG_VER' 					=> '1.2.0',
 	'STATS_PERMISSIONS_LANG_AUTHOR' 				=> 'LukeWCS',
 
 	// messages

@@ -6,6 +6,9 @@
 * @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
+* Note: This extension is 100% genuine handcraft and consists of selected
+*       natural raw materials. There was no AI involved in making it.
+*
 */
 
 /**
@@ -35,7 +38,7 @@ if (empty($lang) || !is_array($lang))
 //
 // Some characters you may want to copy&paste:
 // ’ « » “ ” … „ “
-//
+
 $lang = array_merge($lang, [
 	// config head
 	'STATS_PERMISSIONS_CONFIG_TITLE'				=> 'Statistik-Berechtigungen',
@@ -53,10 +56,8 @@ $lang = array_merge($lang, [
 	'STATS_PERMISSIONS_PERM_FOR_GUESTS_EXP'			=> 'Legt fest, was Gäste sehen können. Wenn alle Schalter deaktiviert sind, wird die Statistik-Anzeige für Gäste komplett ausgeschaltet.',
 	'STATS_PERMISSIONS_PERM_FOR_BOTS'				=> 'Anzeige für Bots',
 	'STATS_PERMISSIONS_PERM_FOR_BOTS_EXP'			=> 'Legt fest, was Bots sehen können. Wenn alle Schalter deaktiviert sind, wird die Statistik-Anzeige für Bots komplett ausgeschaltet.',
-	// 'STATS_PERMISSIONS_PERM_STATS_NEWEST'			=> 'Statistik und neuestes Mitglied',
 	'STATS_PERMISSIONS_PERM_NEWEST'					=> 'Neuestes Mitglied',
 	'STATS_PERMISSIONS_PERM_STATS'					=> 'Statistik',
-	// 'STATS_PERMISSIONS_PERM_NOTHING'				=> 'Nichts',
 
 	// config section 2
 	'STATS_PERMISSIONS_SECTION_RESET'				=> 'Zurücksetzen',

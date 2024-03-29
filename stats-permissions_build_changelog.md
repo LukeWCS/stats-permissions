@@ -1,3 +1,12 @@
+### 1.2.0
+* Release (2024-03-29)
+* Core Code in den Listener integriert und Core Ordner gelöscht.
+* ACP-Template:
+  * `select()` Makro entfernt, da nicht mehr benötigt.
+* Code bereinigt bei PHP, HTML und JS.
+* Sprachdateien:
+  * Mindestversion auf 1.2.0 erhöht.
+
 #### 1.2.0-b1
 * phpBB Voraussetzung: 
   * Min. 3.2.11 -> 3.3.0.

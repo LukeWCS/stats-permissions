@@ -1,10 +1,11 @@
 ### 1.2.0
-(2024--)
+(2024-03-29)
 
 * Die Unterstützung für phpBB 3.2 wurde aufgegeben, Minimum ist jetzt phpBB 3.3.0.
 * Rechtesystem: Von LFWWH 2.2.0 die Änderungen am vereinfachten Berechtigungssystem übernommen.
   * Das vereinfachte Berechtigungssystem in einen eigenen Abschnitt gesetzt und eine kleine Erklärung hinzugefügt.
   * Statt einem Dropdown-Menü mit 4 Optionen, dienen jetzt 2 separate Schalter pro Gruppe für die Wahl der Berechtigungen.
+* Code Optimierung.
 
 ### 1.1.0
 (2023-12-09)

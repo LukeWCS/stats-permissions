@@ -6,33 +6,37 @@
 * @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
+* Note: This extension is 100% genuine handcraft and consists of selected
+*       natural raw materials. There was no AI involved in making it.
+*
 */
 
 namespace lukewcs\statspermissions\controller;
 
 class acp_stats_permissions_controller
 {
-	protected $language;
-	protected $template;
-	protected $request;
 	protected $config;
+	protected $template;
+	protected $language;
+	protected $request;
 	protected $ext_manager;
+
 	protected $metadata;
 
 	public $u_action;
 
 	public function __construct(
-		\phpbb\language\language $language,
-		\phpbb\template\template $template,
-		\phpbb\request\request $request,
 		\phpbb\config\config $config,
+		\phpbb\template\template $template,
+		\phpbb\language\language $language,
+		\phpbb\request\request $request,
 		\phpbb\extension\manager $ext_manager
 	)
 	{
-		$this->language		= $language;
-		$this->template		= $template;
-		$this->request		= $request;
 		$this->config		= $config;
+		$this->template		= $template;
+		$this->language		= $language;
+		$this->request		= $request;
 		$this->ext_manager	= $ext_manager;
 
 		$this->metadata		= $this->ext_manager->create_extension_metadata_manager('lukewcs/statspermissions')->get_metadata('all');
@@ -54,13 +58,9 @@ class acp_stats_permissions_controller
 			// config section 1
 			$this->config->set('stats_permissions_admin_mode'			, $this->request->variable('stats_permissions_admin_mode', 0));
 			$this->config->set('stats_permissions_use_permissions'		, $this->request->variable('stats_permissions_use_permissions', 0));
-
-			// $this->config->set('stats_permissions_disp_for_guests'		, $this->request->variable('stats_permissions_disp_for_guests', 0));
 			$perm_for_guests =	$this->request->variable('stats_permissions_perm_for_guests_stats', 0)	? 1 : 0;
 			$perm_for_guests +=	$this->request->variable('stats_permissions_perm_for_guests_newest', 0)	? 2 : 0;
 			$this->config->set('stats_permissions_perm_for_guests'		, $perm_for_guests);
-
-			// $this->config->set('stats_permissions_disp_for_bots'		, $this->request->variable('stats_permissions_disp_for_bots', 0));
 			$perm_for_bots =	$this->request->variable('stats_permissions_perm_for_bots_stats', 0)	? 1 : 0;
 			$perm_for_bots +=	$this->request->variable('stats_permissions_perm_for_bots_newest', 0)	? 2 : 0;
 			$this->config->set('stats_permissions_perm_for_bots'		, $perm_for_bots);
@@ -76,22 +76,13 @@ class acp_stats_permissions_controller
 		}
 
 		$this->template->assign_vars([
-			// heading
 			'STATS_PERMISSIONS_NOTES'					=> $notes,
-			// config section 1
+
 			'STATS_PERMISSIONS_ADMIN_MODE'				=> $this->config['stats_permissions_admin_mode'],
 			'STATS_PERMISSIONS_USE_PERMISSIONS'			=> $this->config['stats_permissions_use_permissions'],
-			// 'STATS_PERMISSIONS_DISP_FOR_GUESTS'			=> $this->config['stats_permissions_perm_for_guests'],
-			// 'STATS_PERMISSIONS_DISP_FOR_BOTS'			=> $this->config['stats_permissions_perm_for_bots'],
 			'STATS_PERMISSIONS_PERM_FOR_GUESTS'			=> $this->config['stats_permissions_perm_for_guests'],
 			'STATS_PERMISSIONS_PERM_FOR_BOTS'			=> $this->config['stats_permissions_perm_for_bots'],
-			// 'STATS_PERMISSIONS_OPTIONS' => [
-				// 'STATS_PERMISSIONS_PERM_STATS_NEWEST'	=> '3',
-				// 'STATS_PERMISSIONS_PERM_NEWEST'			=> '2',
-				// 'STATS_PERMISSIONS_PERM_STATS'			=> '1',
-				// 'STATS_PERMISSIONS_PERM_NOTHING'		=> '0',
-			// ],
-			// form elements
+
 			'U_ACTION'									=> $this->u_action,
 		]);
 

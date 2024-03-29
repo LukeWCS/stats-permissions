@@ -5,6 +5,9 @@
 * @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
+* Note: This extension is 100% genuine handcraft and consists of selected
+*       natural raw materials. There was no AI involved in making it.
+*
 #}
 
 {% INCLUDE 'overall_header.html' %}
@@ -46,7 +49,6 @@
 		<dl class="simple_permissions">
 			<dt><label>{{ lang('STATS_PERMISSIONS_PERM_FOR_GUESTS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_PERM_FOR_GUESTS_EXP') }}</span></dt>
 			<dd>
-				<!-- {{ _self.select('stats_permissions_disp_for_guests', STATS_PERMISSIONS_DISP_FOR_GUESTS, STATS_PERMISSIONS_OPTIONS) }}<br> -->
 				{{ _self.switch('stats_permissions_perm_for_guests_stats'	, STATS_PERMISSIONS_PERM_FOR_GUESTS b-and 1, switch_type) }} {{ lang('STATS_PERMISSIONS_PERM_STATS') }}<br>
 				{{ _self.switch('stats_permissions_perm_for_guests_newest'	, STATS_PERMISSIONS_PERM_FOR_GUESTS b-and 2, switch_type) }} {{ lang('STATS_PERMISSIONS_PERM_NEWEST') }}<br>
 			</dd>
@@ -55,7 +57,6 @@
 		<dl class="simple_permissions">
 			<dt><label>{{ lang('STATS_PERMISSIONS_PERM_FOR_BOTS') ~ lang('COLON') }}</label><br><span>{{ lang('STATS_PERMISSIONS_PERM_FOR_BOTS_EXP') }}</span></dt>
 			<dd>
-				<!-- {{ _self.select('stats_permissions_disp_for_bots', STATS_PERMISSIONS_DISP_FOR_BOTS, STATS_PERMISSIONS_OPTIONS) }}<br> -->
 				{{ _self.switch('stats_permissions_perm_for_bots_stats'		, STATS_PERMISSIONS_PERM_FOR_BOTS b-and 1, switch_type) }} {{ lang('STATS_PERMISSIONS_PERM_STATS') }}<br>
 				{{ _self.switch('stats_permissions_perm_for_bots_newest'	, STATS_PERMISSIONS_PERM_FOR_BOTS b-and 2, switch_type) }} {{ lang('STATS_PERMISSIONS_PERM_NEWEST') }}<br>
 
@@ -100,14 +101,6 @@
 		<label><input type="radio" class="radio" name="{{ name }}" value="1"{{ checked ? ' checked' }}> {{ lang('YES') }}</label>
 		<label><input type="radio" class="radio" name="{{ name }}" value="0"{{ !checked ? ' checked' }}> {{ lang('NO') }}</label>
 	{%- endif %}
-{%- endmacro %}
-
-{% macro select(name, value, options) -%}
-	<select name="{{ name }}">
-		{% for opt_lang_var, opt_value in options %}
-			<option value="{{ opt_value }}"{{ opt_value == value ? ' selected' }}>{{ lang(opt_lang_var) }}</option>
-		{% endfor %}
-	</select>
 {%- endmacro %}
 
 {% macro js_button(name, lang_var) -%}

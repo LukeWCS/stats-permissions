@@ -43,6 +43,10 @@ fieldset dt label {
 	cursor: inherit;
 }
 
+.simple_permissions dd {
+	line-height: 2em;
+}
+
 /*
 * phpBB ACP Toggles - A CSS class that makes it easy to display checkboxes as toggles.
 * Source     : https://danklammer.com/articles/simple-css-toggle-switch/

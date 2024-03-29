@@ -1,12 +1,13 @@
 <?php
 /**
 *
-* LF who was here 2 - based on "NV who was here". An extension for the phpBB Forum Software package.
+* Stats Permissions. An extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2018, LukeWCS, https://www.wcsaga.org/
-* @copyright (c) 2015, Anvar, http://phpbbguru.net
-* @copyright (c) 2013, nickvergessen, http://www.flying-bits.org/
+* @copyright (c) 2019, LukeWCS, https://www.wcsaga.org/
 * @license GNU General Public License, version 2 (GPL-2.0)
+*
+* Note: This extension is 100% genuine handcraft and consists of selected
+*       natural raw materials. There was no AI involved in making it.
 *
 */
 
