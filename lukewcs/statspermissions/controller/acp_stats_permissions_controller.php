@@ -15,15 +15,14 @@ namespace lukewcs\statspermissions\controller;
 
 class acp_stats_permissions_controller
 {
-	protected $config;
-	protected $template;
-	protected $language;
-	protected $request;
-	protected $ext_manager;
+	protected object $config;
+	protected object $template;
+	protected object $language;
+	protected object $request;
+	protected object $ext_manager;
 
-	protected $metadata;
-
-	public $u_action;
+	protected array  $metadata;
+	public    string $u_action;
 
 	public function __construct(
 		\phpbb\config\config $config,
@@ -47,7 +46,7 @@ class acp_stats_permissions_controller
 		$notes = [];
 
 		$this->language->add_lang(['acp_stats_permissions', 'acp_stats_permissions_lang_author'], 'lukewcs/statspermissions');
-		$this->set_meta_template_vars('STATS_PERMISSIONS');
+		$this->set_meta_template_vars('STATS_PERMISSIONS', 'LukeWCS');
 
 		if ($this->request->is_set_post('submit'))
 		{
@@ -58,9 +57,11 @@ class acp_stats_permissions_controller
 			// config section 1
 			$this->config->set('stats_permissions_admin_mode'			, $this->request->variable('stats_permissions_admin_mode', 0));
 			$this->config->set('stats_permissions_use_permissions'		, $this->request->variable('stats_permissions_use_permissions', 0));
+
 			$perm_for_guests =	$this->request->variable('stats_permissions_perm_for_guests_stats', 0)	? 1 : 0;
 			$perm_for_guests +=	$this->request->variable('stats_permissions_perm_for_guests_newest', 0)	? 2 : 0;
 			$this->config->set('stats_permissions_perm_for_guests'		, $perm_for_guests);
+
 			$perm_for_bots =	$this->request->variable('stats_permissions_perm_for_bots_stats', 0)	? 1 : 0;
 			$perm_for_bots +=	$this->request->variable('stats_permissions_perm_for_bots_newest', 0)	? 2 : 0;
 			$this->config->set('stats_permissions_perm_for_bots'		, $perm_for_bots);
@@ -76,14 +77,14 @@ class acp_stats_permissions_controller
 		}
 
 		$this->template->assign_vars([
-			'STATS_PERMISSIONS_NOTES'					=> $notes,
+			'STATS_PERMISSIONS_NOTES'			=> $notes,
 
-			'STATS_PERMISSIONS_ADMIN_MODE'				=> $this->config['stats_permissions_admin_mode'],
-			'STATS_PERMISSIONS_USE_PERMISSIONS'			=> $this->config['stats_permissions_use_permissions'],
-			'STATS_PERMISSIONS_PERM_FOR_GUESTS'			=> $this->config['stats_permissions_perm_for_guests'],
-			'STATS_PERMISSIONS_PERM_FOR_BOTS'			=> $this->config['stats_permissions_perm_for_bots'],
+			'STATS_PERMISSIONS_ADMIN_MODE'		=> (bool) $this->config['stats_permissions_admin_mode'],
+			'STATS_PERMISSIONS_USE_PERMISSIONS'	=> (bool) $this->config['stats_permissions_use_permissions'],
+			'STATS_PERMISSIONS_PERM_FOR_GUESTS'	=> (int) $this->config['stats_permissions_perm_for_guests'],
+			'STATS_PERMISSIONS_PERM_FOR_BOTS'	=> (int) $this->config['stats_permissions_perm_for_bots'],
 
-			'U_ACTION'									=> $this->u_action,
+			'U_ACTION'							=> $this->u_action,
 		]);
 
 		add_form_key('stats_permissions');
@@ -94,13 +95,18 @@ class acp_stats_permissions_controller
 		$this->u_action = $u_action;
 	}
 
-	// Determine the version of the language pack with fallback to 0.0.0
+	/*
+		Determine the version of the language pack with fallback to 0.0.0
+	*/
 	private function get_lang_ver(string $lang_ext_ver): string
 	{
-		return ($this->language->is_set($lang_ext_ver) ? preg_replace('/[^0-9.]/', '', $this->language->lang($lang_ext_ver)) : '0.0.0');
+		preg_match('/^([0-9]+\.[0-9]+\.[0-9]+.*)/', $this->language->lang($lang_ext_ver), $matches);
+		return ($matches[1] ?? '0.0.0');
 	}
 
-	// Check the language pack version for the minimum version and generate notice if outdated
+	/*
+		Check the language pack version for the minimum version and generate notice if outdated
+	*/
 	private function lang_ver_check_msg(string $lang_version_var, string $lang_outdated_var): string
 	{
 		$lang_outdated_msg = '';
@@ -113,7 +119,7 @@ class acp_stats_permissions_controller
 			{
 				$lang_outdated_msg = $this->language->lang($lang_outdated_var);
 			}
-			else // Fallback if the current language package does not yet have the required variable.
+			else /* Fallback if the current language package does not yet have the required variable. */
 			{
 				$lang_outdated_msg = 'Note: The language pack for the extension <strong>%1$s</strong> is no longer up-to-date. (installed: %2$s / needed: %3$s)';
 			}
@@ -123,17 +129,20 @@ class acp_stats_permissions_controller
 		return $lang_outdated_msg;
 	}
 
-	private function set_meta_template_vars(string $tpl_prefix): void
+	private function set_meta_template_vars(string $tpl_prefix, string $copyright): void
 	{
-		$this->template->assign_vars([
-			$tpl_prefix . '_METADATA'	=> [
-				'EXT_NAME'		=> $this->metadata['extra']['display-name'],
-				'EXT_VER'		=> $this->language->lang($tpl_prefix . '_VERSION_STRING', $this->metadata['version']),
-				'LANG_DESC'		=> $this->language->lang($tpl_prefix . '_LANG_DESC'),
-				'LANG_VER'		=> $this->language->lang($tpl_prefix . '_VERSION_STRING', $this->language->lang($tpl_prefix . '_LANG_VER')),
-				'LANG_AUTHOR'	=> $this->language->lang($tpl_prefix . '_LANG_AUTHOR'),
-				'CLASS'			=> strtolower($tpl_prefix) . '_footer',
-			],
-		]);
+		$template_vars = [
+			'ext_name'		=> $this->metadata['extra']['display-name'],
+			'ext_ver'		=> $this->language->lang($tpl_prefix . '_VERSION_STRING', $this->metadata['version']),
+			'ext_copyright'	=> $copyright,
+			'class'			=> strtolower($tpl_prefix) . '_footer',
+		];
+		$template_vars += $this->language->is_set($tpl_prefix . '_LANG_VER') ? [
+			'lang_desc'		=> $this->language->lang($tpl_prefix . '_LANG_DESC'),
+			'lang_ver'		=> $this->language->lang($tpl_prefix . '_VERSION_STRING', $this->language->lang($tpl_prefix . '_LANG_VER')),
+			'lang_author'	=> $this->language->lang($tpl_prefix . '_LANG_AUTHOR'),
+		] : [];
+
+		$this->template->assign_vars([$tpl_prefix . '_METADATA' => $template_vars]);
 	}
 }

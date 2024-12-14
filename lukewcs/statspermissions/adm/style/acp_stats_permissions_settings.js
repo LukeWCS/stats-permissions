@@ -10,7 +10,7 @@
 *
 */
 
-(function ($) {	// IIFE start
+(function ($) {
 
 'use strict';
 
@@ -76,4 +76,4 @@ $(function() {
 	$('#stats_permissions_form')					.on('reset',	formReset);
 });
 
-})(jQuery);	// IIFE end
+})(jQuery);

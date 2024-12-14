@@ -17,10 +17,15 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class listener implements EventSubscriberInterface
 {
-	const PERM_STATS	= 1;
-	const PERM_NEWEST	= 2;
+	protected const  PERM_STATS		= 1;
+	protected const  PERM_NEWEST	= 2;
 
-	protected $stats_permissions_core;
+	protected object $config;
+	protected object $template;
+	protected object $language;
+	protected object $auth;
+	protected object $user;
+	protected object $phpbb_dispatcher;
 
 	public function __construct(
 		\phpbb\config\config $config,
@@ -31,15 +36,15 @@ class listener implements EventSubscriberInterface
 		\phpbb\event\dispatcher_interface $dispatcher
 	)
 	{
-		$this->config = $config;
-		$this->template = $template;
-		$this->language = $language;
-		$this->auth = $auth;
-		$this->user = $user;
+		$this->config			= $config;
+		$this->template			= $template;
+		$this->language			= $language;
+		$this->auth				= $auth;
+		$this->user				= $user;
 		$this->phpbb_dispatcher = $dispatcher;
 	}
 
-	public static function getSubscribedEvents()
+	public static function getSubscribedEvents(): array
 	{
 		return [
 			'core.page_header_after'	=> 'set_template_vars',
@@ -47,7 +52,10 @@ class listener implements EventSubscriberInterface
 		];
 	}
 
-	public function set_template_vars()
+	/*
+		EVENT: core.page_header_after
+	*/
+	public function set_template_vars(): void
 	{
 		$force_api_mode = false;
 
@@ -63,7 +71,7 @@ class listener implements EventSubscriberInterface
 
 		$force_api_mode = ($force_api_mode === true);
 
-		// Set display permission variables
+		/* Set display permission variables */
 		if ($this->config['stats_permissions_admin_mode'])
 		{
 			$permission_stats = $this->auth->acl_get('a_');
@@ -71,24 +79,24 @@ class listener implements EventSubscriberInterface
 		}
 		else
 		{
-			if ($this->config['stats_permissions_use_permissions']) // use phpBB permissions
+			if ($this->config['stats_permissions_use_permissions']) /* use phpBB permissions */
 			{
 				$permission_stats = $this->auth->acl_gets('u_stats_permissions_show_stats');
 				$permission_newest = $this->auth->acl_gets('u_stats_permissions_show_newest');
 			}
 			else
 			{
-				if ($this->user->data['user_id'] != ANONYMOUS && empty($this->user->data['is_bot']))	// user
+				if ($this->user->data['user_id'] != ANONYMOUS && empty($this->user->data['is_bot']))	/* user */
 				{
 					$permission_stats = true;
 					$permission_newest = true;
 				}
-				else if (!empty($this->user->data['is_bot']))	// bot
+				else if (!empty($this->user->data['is_bot']))	/* bot */
 				{
 					$permission_stats	= $this->config['stats_permissions_perm_for_bots'] & self::PERM_STATS;
 					$permission_newest	= $this->config['stats_permissions_perm_for_bots'] & self::PERM_NEWEST;
 				}
-				else	// guest
+				else	/* guest */
 				{
 					$permission_stats	= $this->config['stats_permissions_perm_for_guests'] & self::PERM_STATS;
 					$permission_newest	= $this->config['stats_permissions_perm_for_guests'] & self::PERM_NEWEST;
@@ -105,9 +113,11 @@ class listener implements EventSubscriberInterface
 		]);
 	}
 
-	public function add_permissions($event)
+	/*
+		EVENT: core.permissions
+	*/
+	public function add_permissions($event): void
 	{
-		$permissions = $event['permissions'];
 		$lang_show_stats = $this->language->lang('ACL_U_STATS_PERMISSIONS_SHOW_STATS');
 		$lang_show_newest = $this->language->lang('ACL_U_STATS_PERMISSIONS_SHOW_NEWEST');
 
@@ -117,8 +127,7 @@ class listener implements EventSubscriberInterface
 			$lang_show_newest = '<span style="opacity: 0.5;">' . $lang_show_newest . '</span>';
 		}
 
-		$permissions['u_stats_permissions_show_stats'] = ['lang' => $lang_show_stats, 'cat' => 'misc'];
-		$permissions['u_stats_permissions_show_newest'] = ['lang' => $lang_show_newest, 'cat' => 'misc'];
-		$event['permissions'] = $permissions;
+		$event->update_subarray('permissions', 'u_stats_permissions_show_stats', ['lang' => $lang_show_stats, 'cat' => 'misc']);
+		$event->update_subarray('permissions', 'u_stats_permissions_show_newest', ['lang' => $lang_show_newest, 'cat' => 'misc']);
 	}
 }

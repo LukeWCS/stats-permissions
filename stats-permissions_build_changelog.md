@@ -1,3 +1,18 @@
+### 1.2.1
+* Release (2024-12-14)
+* PHP:
+  * Code verwendet jetzt 7.4 Features.
+  * Code strikter gestaltet.
+* ext.php`/`composer.json` angepasst:
+  * PHP: 7.1.3-8.3.x -> 7.4.0-8.4.x
+* ACP-Template:
+  * Aktuelles Makro `footer()` von EMP 3.0 übernommen.
+* ACP-Controller:
+  * Aktuelle Funktion `get_lang_ver()` von EMP 3.0 übernommen.
+  * Aktuelle Funktion `set_meta_template_vars()` von EMP 3.0 übernommen.
+* Listener: 
+  * Wie bei "Limit Multiple Replies" werden Rechte jetzt mit der Wrapper Funktion `update_subarray()` (>=phpBB 3.2.1) eingehängt, wodurch das umständliche Extrahieren und Zurückkopieren des Subarrays `$event['permissions']` entfällt.
+
 ### 1.2.0
 * Release (2024-03-29)
 * Core Code in den Listener integriert und Core Ordner gelöscht.
